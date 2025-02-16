@@ -8,6 +8,8 @@ public class StageManager : MonoBehaviour
 
     private bool lightsDimming = false;
 
+    public static bool userPerforming = false;
+
     [SerializeField] private float dimTime = 2;
 
     // Start is called before the first frame update
