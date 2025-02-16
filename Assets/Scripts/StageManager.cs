@@ -39,20 +39,16 @@ public class StageManager : MonoBehaviour
     {
         lightsDimming = true;
 
-        var t = 0;
+        var t = 0f;
 
-        while (t < 100) {
-            stageLight.intensity = Mathf.Lerp(1, 0.5f, t);
+        while (t < dimTime) {
+            stageLight.intensity = Mathf.Lerp(1, 0.5f, t / dimTime);
 
-            Debug.Log(stageLight.intensity);
+            t += Time.deltaTime;
 
-            t += 1;
+            yield return null;
         }
 
-        Debug.Log("Dimming Lights");
-
-        yield return null;
-
-        Debug.Log("Lights Dimmed");
+        lightsDimming = false;
     }
 }

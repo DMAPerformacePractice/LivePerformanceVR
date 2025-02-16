@@ -324,6 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 915a949024b0aa74fa76e5ea067076ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interruptions: {fileID: 0}
 --- !u!1 &13445485
 GameObject:
   m_ObjectHideFlags: 0
@@ -8366,7 +8367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageLight: {fileID: 11915273}
-  dimTime: 2
+  dimTime: 5
 --- !u!4 &1046134194
 Transform:
   m_ObjectHideFlags: 0
