@@ -10,11 +10,20 @@ public class StageManager : MonoBehaviour
     private bool lightsDimming = false;
 
     public static bool userPerforming = false;
-    public static event Action<StageManager> OnPerformaceStartEvent;
+    public static event Action<StageManager> OnPerformanceStartEvent;
+    public static event Action<StageManager> OnPerformaceEndEvent;
 
     [SerializeField] private float dimTime = 2;
+    [SerializeField] private float brightenTime = 2;
 
     [SerializeField] static private AudienceInterruption[] audienceInterruptions;
+
+    [SerializeField] private AudioLoudnessDetection loudnessDetector;
+    private float loudnessSensitivity = 100;
+    private float loudnessThreshold = 0.2f;
+    // How long it should be quiet before the performance is ended
+    private float endPerformanceTime = 10f;
+    private float endPerformanceTimer = 0;
 
     private void Awake()
     {
@@ -34,7 +43,7 @@ public class StageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        loudnessDetector = GetComponent<AudioLoudnessDetection>();
     }
 
     // Update is called once per frame
@@ -44,17 +53,46 @@ public class StageManager : MonoBehaviour
         {
             StartPerformance();
         }
+
+        if (userPerforming)
+        {
+            float loudness = loudnessDetector.GetLoudnessFromMicrophone() * loudnessSensitivity;
+
+            if (loudness < loudnessThreshold)
+            {
+                endPerformanceTimer += Time.deltaTime;
+                if (endPerformanceTimer >= endPerformanceTime)
+                {
+                    EndPerformance();
+                }
+            }
+            else
+            {
+                endPerformanceTimer = 0;
+            }
+        }
     }
 
     public void StartPerformance()
     {
         if (userPerforming == false)
         {
-            OnPerformaceStartEvent(this);
+            OnPerformanceStartEvent(this);
+            userPerforming = true;
             if (lightsDimming == false)
             {
                 StartCoroutine(DimLights());
             }
+        }
+    }
+
+    public void EndPerformance()
+    {
+        if (userPerforming == true)
+        {
+            OnPerformaceEndEvent(this);
+            userPerforming = false;
+            StartCoroutine(BrightenLights());
         }
     }
 
@@ -73,6 +111,20 @@ public class StageManager : MonoBehaviour
         }
 
         lightsDimming = false;
+    }
+
+    private IEnumerator BrightenLights()
+    {
+        var t = 0f;
+
+        while (t < brightenTime)
+        {
+            stageLight.intensity = Mathf.Lerp(0.5f, 1, t / brightenTime);
+
+            t += Time.deltaTime;
+
+            yield return null;
+        }
     }
 
     public static AudienceInterruption[] GetAudienceInterruptions()

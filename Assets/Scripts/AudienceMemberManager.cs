@@ -20,7 +20,8 @@ public class AudienceMemberManager : MonoBehaviour
     {
         audienceInterruptions = StageManager.GetAudienceInterruptions();
         audioSource = GetComponent<AudioSource>();
-        StageManager.OnPerformaceStartEvent += StartAudienceMember;
+        StageManager.OnPerformanceStartEvent += StartAudienceMember;
+        StageManager.OnPerformaceEndEvent += StopAudienceMember;
     }
 
     // Update is called once per frame
@@ -33,6 +34,12 @@ public class AudienceMemberManager : MonoBehaviour
     {
         inPerformance = true;
         StartCoroutine(RunAudienceMember());
+    }
+
+    private void StopAudienceMember(StageManager stageManager)
+    {
+        inPerformance = false;
+        StopCoroutine(RunAudienceMember());
     }
 
     // Other option could be something like it has a 5% chance of an interruption every 10 seconds.
