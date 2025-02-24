@@ -61,6 +61,11 @@ public class StageManager : MonoBehaviour
     /// </summary>
     private float endPerformanceTimer = 0;
 
+    // How long should audio be loud to conclude that there wasn't just a spike in audio when checking on whether to reset endPerformanceTimer or not.
+    private float continuePerformanceTime = 2f;
+    // Timer to keep track of when the above time passes.
+    private float continuePerformanceTimer = 0;
+
     private void Awake()
     {
         // Load all the assets in the Resources/Interruptions folder
@@ -106,6 +111,7 @@ public class StageManager : MonoBehaviour
             // If little sound is detected, user probably isn't playing
             if (loudness < loudnessThreshold)
             {
+                continuePerformanceTimer = 0;
                 // If they don't make sound for an extended period of time, they definitely aren't playing, so end the performance
                 endPerformanceTimer += Time.deltaTime;
                 if (endPerformanceTimer >= endPerformanceTime)
@@ -116,7 +122,12 @@ public class StageManager : MonoBehaviour
             // If we detect sound again, they probably just stopped playing for a second or two, so reset timer
             else
             {
-                endPerformanceTimer = 0;
+                // Check there wasn't just a spike in audio by running a short timer
+                continuePerformanceTimer += Time.deltaTime;
+                if (continuePerformanceTimer >= continuePerformanceTime)
+                {
+                    endPerformanceTimer = 0;
+                }
             }
         }
     }
