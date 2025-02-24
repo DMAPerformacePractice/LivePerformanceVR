@@ -25,6 +25,10 @@ public class StageManager : MonoBehaviour
     public static bool userPerforming = false;
     public static event Action<StageManager> OnPerformanceStartEvent;
     public static event Action<StageManager> OnPerformaceEndEvent;
+    public static event Action<StageManager> StartAudienceClapping;
+    public static event Action<StageManager> StopAudienceClapping;
+
+    private bool audienceClapping = false;
 
     /// <summary>
     /// How long it should take for the lights to dim at the start of the performance.
@@ -42,6 +46,8 @@ public class StageManager : MonoBehaviour
     /// </summary>
     private static AudienceInterruption[] audienceInterruptions;
 
+    private static AudienceInterruption[] claps;
+
     [SerializeField] private AudioLoudnessDetection loudnessDetector;
     /// <summary>
     /// Adjusts the sensitivity of the microphone.
@@ -49,8 +55,8 @@ public class StageManager : MonoBehaviour
     /// By default microphone audio comes in super low, so it is recommended to set this value high to get any sort of feedback.
     /// </para>
     /// </summary>
-    private float loudnessSensitivity = 100;
-    private float loudnessThreshold = 0.2f;
+    [SerializeField] private float loudnessSensitivity = 100;
+    [SerializeField] private float loudnessThreshold = 0.01f;
 
     /// <summary>
     /// How long it should be quiet before the performance is ended
@@ -59,17 +65,17 @@ public class StageManager : MonoBehaviour
     /// <summary>
     /// Keeps track of how close we are to meeting <see cref="endPerformanceTime"/>
     /// </summary>
-    private float endPerformanceTimer = 0;
+    [SerializeField] private float endPerformanceTimer = 0;
 
     // How long should audio be loud to conclude that there wasn't just a spike in audio when checking on whether to reset endPerformanceTimer or not.
     private float continuePerformanceTime = 2f;
     // Timer to keep track of when the above time passes.
-    private float continuePerformanceTimer = 0;
+    [SerializeField] private float continuePerformanceTimer = 0;
 
     private void Awake()
     {
         // Load all the assets in the Resources/Interruptions folder
-        var interruptions = Resources.LoadAll("Interruptions");
+        var interruptions = Resources.LoadAll("Interruptions/General");
 
         // Make sure the audienceInterruptions array is the proper length
         audienceInterruptions = new AudienceInterruption[interruptions.Length];
@@ -81,6 +87,22 @@ public class StageManager : MonoBehaviour
             if (interruptions[i] is AudienceInterruption)
             {
                 audienceInterruptions[i] = (AudienceInterruption) interruptions[i];
+            }
+        }
+
+        // Load all the assets in the Resources/Interruptions folder
+        interruptions = Resources.LoadAll("Interruptions/Claps");
+
+        // Make sure the audienceInterruptions array is the proper length
+        claps = new AudienceInterruption[interruptions.Length];
+
+        // Go through all the loaded assets and save all the AudienceInterruptions into the appropriate array
+        // (They should all be AudienceInterruptions)
+        for (int i = 0; i < interruptions.Length; i++)
+        {
+            if (interruptions[i] is AudienceInterruption)
+            {
+                claps[i] = (AudienceInterruption)interruptions[i];
             }
         }
     }
@@ -111,6 +133,11 @@ public class StageManager : MonoBehaviour
             // If little sound is detected, user probably isn't playing
             if (loudness < loudnessThreshold)
             {
+                if (audienceClapping == false)
+                {
+                    audienceClapping = true;
+                    StartAudienceClapping(this);
+                }
                 continuePerformanceTimer = 0;
                 // If they don't make sound for an extended period of time, they definitely aren't playing, so end the performance
                 endPerformanceTimer += Time.deltaTime;
@@ -122,6 +149,11 @@ public class StageManager : MonoBehaviour
             // If we detect sound again, they probably just stopped playing for a second or two, so reset timer
             else
             {
+                if (audienceClapping == true)
+                {
+                    audienceClapping = false;
+                    StopAudienceClapping(this);
+                }
                 // Check there wasn't just a spike in audio by running a short timer
                 continuePerformanceTimer += Time.deltaTime;
                 if (continuePerformanceTimer >= continuePerformanceTime)
@@ -219,5 +251,10 @@ public class StageManager : MonoBehaviour
     public static AudienceInterruption[] GetAudienceInterruptions()
     {
         return audienceInterruptions;
+    }
+
+    public static AudienceInterruption[] GetClaps()
+    {
+        return claps;
     }
 }

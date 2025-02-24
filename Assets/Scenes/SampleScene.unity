@@ -637,7 +637,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9b2e8b22fa1a03746bba5776e52a40ba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -693,10 +693,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5f7b1b4b03751fd408a44bf39aba40d9, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -4056,7 +4056,7 @@ Transform:
   m_GameObject: {fileID: 456359164}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5656846, y: -2.0858757, z: 0.802807}
+  m_LocalPosition: {x: 3.5656846, y: -2.0858757, z: 4.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8577,6 +8577,11 @@ MonoBehaviour:
   dimTime: 5
   brightenTime: 2
   loudnessDetector: {fileID: 1046134195}
+  loudnessSensitivity: 400
+  loudnessThreshold: 0.01
+  endPerformanceTimer: 0
+  continuePerformanceTimer: 0
+  objectGuy: {fileID: 44762043}
 --- !u!4 &1046134194
 Transform:
   m_ObjectHideFlags: 0
@@ -8605,8 +8610,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sampleWindow: 64
-  loudnessSensibility: 100
-  threshold: 0.1
 --- !u!1 &1047820674
 GameObject:
   m_ObjectHideFlags: 0
