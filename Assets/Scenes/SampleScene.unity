@@ -899,6 +899,7 @@ MonoBehaviour:
   inPerformance: 0
   interruptionDelayTime: 10
   interruptionVariability: 2
+  clapTime: 5
 --- !u!1 &45304652
 GameObject:
   m_ObjectHideFlags: 0
@@ -8683,7 +8684,7 @@ MonoBehaviour:
   dimTime: 5
   brightenTime: 2
   loudnessDetector: {fileID: 1046134195}
-  loudnessSensitivity: 400
+  loudnessSensitivity: 300
   loudnessThreshold: 0.01
   endPerformanceTimer: 0
   continuePerformanceTimer: 0

@@ -19,6 +19,7 @@ public class StageManager : MonoBehaviour
     /// </summary>
     private bool lightsDimming = false;
 
+    public static bool performanceStarted = false;
     /// <summary>
     /// Is the user currently performing?
     /// </summary>
@@ -117,6 +118,7 @@ public class StageManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         TrackMicrophoneAudio();
     }
 
@@ -125,10 +127,21 @@ public class StageManager : MonoBehaviour
     /// </summary>
     private void TrackMicrophoneAudio()
     {
-        if (userPerforming)
+        if (performanceStarted)
         {
             // Get the loudness and boost it to more reasonable levels
             float loudness = loudnessDetector.GetLoudnessFromMicrophone() * loudnessSensitivity;
+
+            Debug.Log(loudness);
+            
+            if (!userPerforming && loudness < loudnessThreshold)
+            {
+                return;
+            }
+            else
+            {
+                userPerforming = true;
+            }
 
             // If little sound is detected, user probably isn't playing
             if (loudness < loudnessThreshold)
@@ -166,18 +179,18 @@ public class StageManager : MonoBehaviour
 
     /// <summary>
     /// Performs all tasks regarding starting the performance, such as sending the <see cref="OnPerformanceStartEvent"/>,
-    /// turning <see cref="userPerforming"/> to true, and dimming the lights (See: <see cref="DimLights"/>.
+    /// turning <see cref="performanceStarted"/> to true, and dimming the lights (See: <see cref="DimLights"/>.
     /// <para>
     ///     Only does the above if the user is not already performing.
     /// </para>
     /// </summary>
     public void StartPerformance()
     {
-        if (userPerforming == false)
+        if (performanceStarted == false)
         {
             // Trigger OnPerformanceStartEvent event
             OnPerformanceStartEvent(this);
-            userPerforming = true;
+            performanceStarted = true;
             if (lightsDimming == false)
             {
                 StartCoroutine(DimLights());
@@ -187,18 +200,18 @@ public class StageManager : MonoBehaviour
 
     /// <summary>
     /// Performs all tasks regarding ending the performance, such as triggering the <see cref="OnPerformaceEndEvent"/>,
-    /// turning <see cref="userPerforming"/> to false, and brightening the lights (See: <see cref="BrightenLights"/>).
+    /// turning <see cref="performanceStarted"/> to false, and brightening the lights (See: <see cref="BrightenLights"/>).
     /// <para>
     ///     Only does the above if the user is currently performing.
     /// </para>
     /// </summary>
     public void EndPerformance()
     {
-        if (userPerforming == true)
+        if (performanceStarted == true)
         {
             // Trigger OnPerformanceEndEvent event
             OnPerformaceEndEvent(this);
-            userPerforming = false;
+            performanceStarted = false;
             StartCoroutine(BrightenLights());
         }
     }
