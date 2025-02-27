@@ -8,47 +8,47 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 1_seat_fabric
-    second: {fileID: 2100000, guid: f1dfd1173de5f4444a0264c4a4e27fa1, type: 2}
+    second: {fileID: 2100000, guid: 153054dbb040816409f2d7c919e1a1d3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 1_seat_plastic
-    second: {fileID: 2100000, guid: 97b631bd34cb74947bb2c51b964c139b, type: 2}
+    second: {fileID: 2100000, guid: 5c282441459a4bc458564cbd6c1a2448, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Live_Performance_Stage_TEST
-    second: {fileID: 2100000, guid: 7842a3974ed00084aa811951fc07ba97, type: 2}
+    second: {fileID: 2100000, guid: d3d4100587b0bd943811b6130e3dda32, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: SeatBottom
-    second: {fileID: 2100000, guid: 9ae947d54ceb90f4a81c8078087feae7, type: 2}
+    second: {fileID: 2100000, guid: 20a8610f0e9de774796f5cc7c6c706c6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: SeatTop_Base
-    second: {fileID: 2100000, guid: 54651c29b5afbbd48875411e2add1d2c, type: 2}
+    second: {fileID: 2100000, guid: a6c065f2e3def644f9c5cfd5ef2a7cf2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: base_metal
-    second: {fileID: 2100000, guid: d00933d7b449c924ea8c78f08ac23c80, type: 2}
+    second: {fileID: 2100000, guid: 31917bb9753194d4e9644e451b860bbe, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: base_plastic
-    second: {fileID: 2100000, guid: 31a26597a5aee8d459edc7862ec7d9bf, type: 2}
+    second: {fileID: 2100000, guid: 1f294688b847b3843b3a25cab70dfcd6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
-    second: {fileID: 2100000, guid: e82e7487bf462a346aa0e9ce64442a19, type: 2}
+    second: {fileID: 2100000, guid: 43bd002bdfb77d8449ea90bdb725036e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert2
-    second: {fileID: 2100000, guid: 438370fd8d6e5904d837cb8fe4d3610d, type: 2}
+    second: {fileID: 2100000, guid: dd23fd2e1b27426408e63e5cbf3006a6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
