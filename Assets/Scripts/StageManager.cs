@@ -132,7 +132,7 @@ public class StageManager : MonoBehaviour
             // Get the loudness and boost it to more reasonable levels
             float loudness = loudnessDetector.GetLoudnessFromMicrophone() * loudnessSensitivity;
 
-            Debug.Log(loudness);
+            //Debug.Log(loudness);
             
             if (!userPerforming && loudness < loudnessThreshold)
             {
@@ -254,6 +254,18 @@ public class StageManager : MonoBehaviour
             t += Time.deltaTime;
 
             yield return null;
+        }
+    }
+
+    public void ToggleAutomaticEnding()
+    {
+        if(endPerformanceTime >= 100)
+        {
+            endPerformanceTime = 10f;
+        }
+        else
+        {
+            endPerformanceTime = 1000f;
         }
     }
 
