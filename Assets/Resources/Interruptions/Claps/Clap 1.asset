@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Clap 1
   m_EditorClassIdentifier: 
   movementAnimation: {fileID: 0}
+  animationNumber: 1
   noise: {fileID: 8300000, guid: 5f7b1b4b03751fd408a44bf39aba40d9, type: 3}

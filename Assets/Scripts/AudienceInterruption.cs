@@ -9,10 +9,10 @@ using UnityEngine;
 public class AudienceInterruption : ScriptableObject
 {
     /// <summary>
-    /// The animation, if any, to play when this interruption is triggered.
+    /// The number of the animation, if any, to play when this interruption is triggered.
     /// </summary>
-    [Tooltip("The animation, if any, to play when this interruption is triggered.")]
-    [SerializeField] private Animation movementAnimation;
+    [Tooltip("The number of the animation, if any, to play when this interruption is triggered.")]
+    [SerializeField] private int animationNumber;
 
     /// <summary>
     /// The noise, if any, to play when this interruption is triggered.
@@ -26,11 +26,11 @@ public class AudienceInterruption : ScriptableObject
     }
 
     /// <summary>
-    /// Returns the <c>movementAnimation</c> attribute of this AudienceInterruption.
+    /// Returns the <c>animationNumber</c> attribute of this AudienceInterruption.
     /// </summary>
-    public Animation getAnimation()
+    public int getAnimationNumber()
     {
-        return movementAnimation;
+        return animationNumber;
     }
 
     /// <summary>

@@ -18,19 +18,32 @@ public class AudienceMemberManager : MonoBehaviour
     [Tooltip("The AudioSource from which to play interruption sounds")]
     private AudioSource audioSource;
 
+    /// <summary>
+    /// The Animator with which the audience member will play animations
+    /// </summary>
+    private Animator animator;
+
+    /// <summary>
+    /// Whether the audience member is currently running and interruption animation or not
+    /// </summary>
+    private bool inInterruption = false;
+
+    /// <summary>
+    /// Changed based on signals from the StageManager. Whether the audience member thinks that performance mode is on or not
+    /// </summary>
     public bool inPerformance = false;
 
     /// <summary>
     /// How many seconds between each audience interruption.
     /// </summary>
     [Tooltip("How many seconds between each audience interruption.")]
-    [SerializeField] private float interruptionDelayTime = 10;
+    [SerializeField] private float interruptionDelayTime = 30;
 
     /// <summary>
     /// Add randomness to interruption time. Interruptions will happen randomly based on a number of seconds outlined by interval [interruptionDelayTime - 2, interruptionDelayTime + 2].
     /// </summary>
     [Tooltip("Add randomness to interruption time. Interruptions will happen randomly based on a number of seconds outlined by the interval [interruptionDelayTime - 2, interruptionDelayTime + 2].")]
-    [SerializeField] private float interruptionVariability = 2;
+    [SerializeField] private float interruptionVariability = 20;
 
     /// <summary>
     /// How long the audience will take to reach max clapping volume.
@@ -56,6 +69,7 @@ public class AudienceMemberManager : MonoBehaviour
         audienceInterruptions = StageManager.GetAudienceInterruptions();
         claps = StageManager.GetClaps();
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
         // Add Methods to StageManager Events
         StageManager.OnPerformanceStartEvent += StartAudienceMember;
         StageManager.OnPerformaceEndEvent += StopAudienceMember;
@@ -66,7 +80,7 @@ public class AudienceMemberManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     /// <summary>
@@ -87,6 +101,9 @@ public class AudienceMemberManager : MonoBehaviour
     {
         inPerformance = false;
         StopCoroutine(RunAudienceMember());
+        //animator.SetBool("Clapping", false);
+        audioSource.loop = false;
+        StopClapping(stageManager);
     }
 
     /// <summary>
@@ -97,13 +114,48 @@ public class AudienceMemberManager : MonoBehaviour
     {
         while (inPerformance)
         {
-            // Wait the appropriate amount of time
-            yield return new WaitForSeconds(interruptionDelayTime + Random.Range(-interruptionVariability, interruptionVariability));
-            // Choose and play a random interruption
-            float rand = Random.value;
-            int interruptionNumber = Mathf.CeilToInt(rand * audienceInterruptions.Length);
-            audioSource.PlayOneShot(audienceInterruptions[interruptionNumber - 1].getNoise());
+            yield return null;
+            if (inInterruption == false)
+            {
+                // Wait the appropriate amount of time
+                yield return new WaitForSeconds(interruptionDelayTime + Random.Range(-interruptionVariability, interruptionVariability));
+                if (inPerformance)
+                {
+                    // Choose and play a random interruption
+                    float rand = Random.value;
+                    int interruptionNumber = Mathf.CeilToInt(rand * audienceInterruptions.Length);
+                    // Play the animation noise, if there is one
+                    audioSource.PlayOneShot(audienceInterruptions[interruptionNumber - 1].getNoise());
+                    // Play the animation itself, if there is one
+                    animator.SetInteger("Interruption Number", audienceInterruptions[interruptionNumber - 1].getAnimationNumber());
+                    animator.SetTrigger("Animation Change");
+                    inInterruption = true;
+                    // Start checking for when the audience member returns to idle
+                    var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+                    StartCoroutine(MonitorAnimationState(stateInfo));
+                }
+            }
         }
+    }
+
+    /// <summary>
+    /// Monitors whether the audience member has returned to the Idle animation. Used to detect when the member is no longer <c>inInterruption</c>.
+    /// </summary>
+    /// <param name="stateInfo"></param>
+    /// <returns></returns>
+    private IEnumerator MonitorAnimationState(AnimatorStateInfo stateInfo)
+    {
+        yield return new WaitUntil(() =>
+        {
+            if (stateInfo.IsName("Idle"))
+            {
+                return true;
+            }
+
+            return false;
+        });
+
+        inInterruption = false;
     }
 
     /// <summary>
@@ -113,14 +165,19 @@ public class AudienceMemberManager : MonoBehaviour
     private void StartClapping(StageManager stageManager)
     {
         // If the audience member isn't already clapping, start them clapping
-        if (clappingCoroutine != null)
+        if (clappingCoroutine == null)
         {
             // Make sure the audience member won't do a random interruption
             StopAllCoroutines();
             // Choose a random clap and play it
             float rand = Random.value;
             int clapNumber = Mathf.CeilToInt(rand * claps.Length);
+            // Play clapping noise
             audioSource.PlayOneShot(claps[clapNumber - 1].getNoise());
+            // Play clapping animation
+            animator.SetInteger("Interruption Number", claps[clapNumber - 1].getAnimationNumber());
+            animator.SetTrigger("Animation Trigger");
+
             // Start the clapping coroutine
             clappingCoroutine = StartCoroutine(ManageClapping());
         }
@@ -145,9 +202,10 @@ public class AudienceMemberManager : MonoBehaviour
 
             // Lerp volume based on how far along the time period we are (so halfway through the time period of clapTime, the volume should be at 0.5)
             audioSource.volume = Mathf.Lerp(0f, 1, t / clapTime);
+            animator.speed = Mathf.Lerp(0f, 1, t / clapTime);
 
             // Either increase or decrease t, based on whether the volume should be increasing or decreasing
-            if (clapIncreasing)
+            if (clapIncreasing && t < clapTime)
             {
                 t += Time.deltaTime;
             }
@@ -157,9 +215,12 @@ public class AudienceMemberManager : MonoBehaviour
             }
         }
 
+        animator.speed = 1;
+
         // If volume went to zero, then we must be done clapping, so resume normal running procedures
         if (t <= 0)
         {
+            animator.SetInteger("Interruption Number", 0);
             StartCoroutine(RunAudienceMember());
         }
     }
