@@ -119,7 +119,7 @@ public class StageManager : MonoBehaviour
     void Update()
     {
 
-        TrackMicrophoneAudio();
+        //TrackMicrophoneAudio();
     }
 
     /// <summary>
