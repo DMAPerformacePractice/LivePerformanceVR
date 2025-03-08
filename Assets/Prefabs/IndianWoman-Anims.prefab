@@ -683,7 +683,7 @@ Transform:
   - {fileID: 2039634279400191846}
   m_Father: {fileID: 1666723762077429124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4544835676195246540
+--- !u!1 &4532602631935336558
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -691,58 +691,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2080907182755526769}
-  - component: {fileID: 1329271724789435300}
-  - component: {fileID: 6629648044920043012}
-  - component: {fileID: 8721812509382076522}
+  - component: {fileID: 2997356768457936797}
+  - component: {fileID: 1540388135348193130}
   m_Layer: 0
-  m_Name: IndianWoman-Anims
+  m_Name: Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2080907182755526769
+--- !u!4 &2997356768457936797
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4544835676195246540}
+  m_GameObject: {fileID: 4532602631935336558}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0328084, y: 0.0328084, z: 0.0328084}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.007881342, y: 34.90801, z: 0.008972839}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8287561746048284365}
-  - {fileID: 8707928807458474738}
-  m_Father: {fileID: 0}
+  m_Children: []
+  m_Father: {fileID: 2080907182755526769}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1329271724789435300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4544835676195246540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 915a949024b0aa74fa76e5ea067076ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inInterruption: 0
-  inPerformance: 0
-  interruptionDelayTime: 30
-  interruptionVariability: 20
-  clapTime: 5
---- !u!82 &6629648044920043012
+--- !u!82 &1540388135348193130
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4544835676195246540}
+  m_GameObject: {fileID: 4532602631935336558}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -792,7 +771,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -832,6 +811,58 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &4544835676195246540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2080907182755526769}
+  - component: {fileID: 1329271724789435300}
+  - component: {fileID: 8721812509382076522}
+  m_Layer: 0
+  m_Name: IndianWoman-Anims
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2080907182755526769
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4544835676195246540}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.0328084, y: 0.0328084, z: 0.0328084}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8287561746048284365}
+  - {fileID: 8707928807458474738}
+  - {fileID: 2997356768457936797}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1329271724789435300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4544835676195246540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 915a949024b0aa74fa76e5ea067076ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inPerformance: 0
+  interruptionDelayTime: 30
+  interruptionVariability: 20
+  clapTime: 5
 --- !u!95 &8721812509382076522
 Animator:
   serializedVersion: 5

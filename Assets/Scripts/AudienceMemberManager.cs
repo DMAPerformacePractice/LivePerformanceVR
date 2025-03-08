@@ -68,7 +68,7 @@ public class AudienceMemberManager : MonoBehaviour
         // Initialize Variables
         audienceInterruptions = StageManager.GetAudienceInterruptions();
         claps = StageManager.GetClaps();
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponentInChildren<AudioSource>();
         animator = GetComponent<Animator>();
         // Add Methods to StageManager Events
         StageManager.OnPerformanceStartEvent += StartAudienceMember;
