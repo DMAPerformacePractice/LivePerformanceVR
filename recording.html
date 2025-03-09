@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recording Instructions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Recording Instructions</h1>
+
+    <div class="recording-container">
+        <p>Follow these steps to record your performance:</p>
+        <ol>
+            <li>Press the built-in VR recording button on the Meta Quest 3.</li>
+            <li>Adjust the camera angle if needed.</li>
+            <li>Stop the recording once finished.</li>
+        </ol>
+
+        <button id="backToOptions">Back to Options</button>
+    </div>
+
+    <script>
+        document.getElementById("backToOptions").addEventListener("click", function() {
+            window.location.href = "options.html";
+        });
+    </script>
+</body>
+</html>
