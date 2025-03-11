@@ -10,6 +10,7 @@
             color: white;
             font-family: Arial, sans-serif;
             padding: 20px;
+            text-align: center;
         }
         .container {
             background-color: #3a3a3a; /* Warm graphite div */
@@ -17,12 +18,28 @@
             border-radius: 10px;
             max-width: 800px;
             margin: auto;
+            text-align: left;
         }
         h1, h2, h3 {
             color: #f5f5f5;
         }
         a {
             color: #1e90ff;
+        }
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 10px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -70,9 +87,25 @@
             <li>Repeat the same button combination to stop the recording.</li>
         </ul>
         
-      <h2>For a Visual Walkthrough</h2>
-<p>Refer to this tutorial:</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EqxQo3a1ER8" frameborder="0" allowfullscreen></iframe>
+        <h2>For a Visual Walkthrough</h2>
+        <p>Refer to this tutorial:</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/EqxQo3a1ER8" frameborder="0" allowfullscreen></iframe>
+    
+        <!-- Navigation Buttons -->
+        <div>
+            <button id="backToOptions">Back to Options</button>
+            <button id="returnHome">Return to Home</button>
+        </div>
     </div>
+
+    <script>
+        document.getElementById("backToOptions").addEventListener("click", function() {
+            window.location.href = "options.html";
+        });
+
+        document.getElementById("returnHome").addEventListener("click", function() {
+            window.location.href = "index.html"; // ✅ Navigates back to the home screen
+        });
+    </script>
 </body>
 </html>
