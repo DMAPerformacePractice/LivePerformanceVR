@@ -5,14 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Options</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .dropdown-container {
+            margin: 10px 0;
+            text-align: center;
+        }
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        select {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            border-radius: 5px;
+            border: none;
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 <body>
     <h1>Options</h1>
 
     <div class="options-container">
-        <p><strong>Audience Size:</strong> Small Group </p>
-        <p><strong>Audience Type:</strong> Respectable</p>
-        
+        <div class="dropdown-container">
+            <label for="audienceSize">Audience Size:</label>
+            <select id="audienceSize" disabled>
+                <option value="small-group" selected>Small Group</option>
+            </select>
+        </div>
+
+        <div class="dropdown-container">
+            <label for="audienceType">Audience Type:</label>
+            <select id="audienceType" disabled>
+                <option value="respectable" selected>Respectable</option>
+            </select>
+        </div>
+
         <button id="recordingBtn">Recording Instructions</button>
         <button id="backBtn">Back to Main Menu</button>
     </div>
