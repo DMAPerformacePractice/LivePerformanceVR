@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "com.meta.xr.sdk.audio": "72.0.0",
-    "com.meta.xr.sdk.core": "72.0.0",
-    "com.meta.xr.sdk.interaction.ovr": "72.0.0",
+    "com.meta.xr.sdk.audio": "74.0.0",
+    "com.meta.xr.sdk.core": "74.0.0",
+    "com.meta.xr.sdk.interaction.ovr": "74.0.1",
     "com.unity.collab-proxy": "2.6.0",
     "com.unity.feature.development": "1.0.1",
     "com.unity.textmeshpro": "3.0.6",
