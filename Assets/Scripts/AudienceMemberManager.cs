@@ -108,7 +108,7 @@ public class AudienceMemberManager : MonoBehaviour
     {
         inPerformance = false;
         StopCoroutine(RunAudienceMember());
-        //animator.SetBool("Clapping", false);
+        animator.SetBool("Not Clapping", true);
         audioSource.loop = false;
         StopClapping(stageManager);
     }
@@ -128,6 +128,7 @@ public class AudienceMemberManager : MonoBehaviour
                 yield return new WaitForSeconds(interruptionDelayTime + Random.Range(-interruptionVariability, interruptionVariability));
                 if (inPerformance)
                 {
+                    animator.SetBool("Not Clapping", true);
                     // Choose and play a random interruption
                     float rand = Random.value;
                     int interruptionNumber = Mathf.CeilToInt(rand * audienceInterruptions.Length);
@@ -171,33 +172,29 @@ public class AudienceMemberManager : MonoBehaviour
     /// <param name="stageManager"></param>
     private void StartClapping(StageManager stageManager)
     {
-        // If the audience member isn't already clapping, start them clapping
-        if (clappingCoroutine == null)
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Clap"))
         {
-            /*// Make sure the audience member won't do a random interruption
-            StopAllCoroutines();
             // Choose a random clap and play it
-            float rand = Random.value;
-            int clapNumber = Mathf.CeilToInt(rand * claps.Length);
             // Play clapping noise
-            audioSource.PlayOneShot(claps[clapNumber - 1].getNoise());
+            if (!audioSource.isPlaying)
+            {
+                audioSource.loop = true;
+                audioSource.clip = claps[1].getNoise();
+                audioSource.Play();
+                
+            }
             // Play clapping animation
-            animator.SetInteger("Interruption Number", claps[clapNumber - 1].getAnimationNumber());
-            animator.SetTrigger("Animation Trigger");*/
-
-            // Start the clapping coroutine
-            clappingCoroutine = StartCoroutine(ManageClapping());
+            animator.SetInteger("Interruption Number", claps[1].getAnimationNumber());
+            animator.SetTrigger("Animation Change");
+            animator.SetBool("Not Clapping", false);
         }
-        // Set the audience member clapping volume to increasing
-        clapIncreasing = true;
-        clapDecreasing = false;
     }
 
     /// <summary>
     /// Manages the audience member's clapping loop. Switchs between increasing and decreasing the clapping volume based on <see cref="clapIncreasing"/> and <see cref="clapDecreasing"/>.
     /// </summary>
     /// <returns></returns>
-    private IEnumerator ManageClapping()
+    /*private IEnumerator ManageClapping()
     {
         var t = 0f;
 
@@ -270,8 +267,8 @@ public class AudienceMemberManager : MonoBehaviour
         {
             animator.SetInteger("Interruption Number", 0);
             StartCoroutine(RunAudienceMember());
-        }*/
-    }
+        }
+    }*/
 
     /// <summary>
     /// Slowly stop having the audience member clap & gradually decrease the volume.
@@ -279,8 +276,11 @@ public class AudienceMemberManager : MonoBehaviour
     /// <param name="stageManager"></param>
     private void StopClapping(StageManager stageManager)
     {
-        // Set the audience member clapping volume to decreasing
-        clapDecreasing = true;
-        clapIncreasing = false;
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Clap"))
+        {
+            audioSource.loop = false;
+            audioSource.Stop();
+            animator.SetBool("Not Clapping", true);
+        }
     }
 }

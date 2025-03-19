@@ -4876,6 +4876,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Saplin-Anim
       objectReference: {fileID: 0}
+    - target: {fileID: 4114275364561289336, guid: 433a144570bc9e64aad88af5e12999e6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5675,6 +5679,10 @@ PrefabInstance:
     - target: {fileID: 6920715124197997785, guid: 0a02f322d08b87147ba541d4f743b455, type: 3}
       propertyPath: m_Name
       value: Woman-Anim
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920715124197997785, guid: 0a02f322d08b87147ba541d4f743b455, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8441,11 +8449,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageLight: {fileID: 11915273}
+  userPerforming: 0
   dimTime: 5
   brightenTime: 2
   loudnessDetector: {fileID: 1046134195}
   loudnessSensitivity: 400
-  loudnessThreshold: 0.01
+  loudnessThreshold: 0.1
   endPerformanceTimer: 0
   continuePerformanceTimer: 0
 --- !u!4 &1046134194
@@ -8926,6 +8935,10 @@ PrefabInstance:
     - target: {fileID: 9165130582434048973, guid: 4aed895e88f874f43a9f3200d610786b, type: 3}
       propertyPath: m_Name
       value: Saplin2-Anim
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165130582434048973, guid: 4aed895e88f874f43a9f3200d610786b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10174,6 +10187,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LatinMan-Anim
       objectReference: {fileID: 0}
+    - target: {fileID: 8231620941459237856, guid: 77b7450e24be98540a7a0669a274d0dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11085,6 +11102,10 @@ PrefabInstance:
     - target: {fileID: 1873044459693162512, guid: a8f8fb89808ea9345aec50764dcffa84, type: 3}
       propertyPath: m_Name
       value: Man-Anim
+      objectReference: {fileID: 0}
+    - target: {fileID: 1873044459693162512, guid: a8f8fb89808ea9345aec50764dcffa84, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7334272197416065283, guid: a8f8fb89808ea9345aec50764dcffa84, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12292,6 +12313,10 @@ PrefabInstance:
     - target: {fileID: 8807117745497065156, guid: c2a32f95657a16a458740a5dbe19199c, type: 3}
       propertyPath: m_Name
       value: BlackMan-Anims
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807117745497065156, guid: c2a32f95657a16a458740a5dbe19199c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16221,6 +16246,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IndianWoman-Anims2
       objectReference: {fileID: 0}
+    - target: {fileID: 968890611738126232, guid: 92dd617f9fea32542bf1af01ced60e09, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6872348853150591135, guid: 92dd617f9fea32542bf1af01ced60e09, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.0522978
@@ -16317,6 +16346,10 @@ PrefabInstance:
     - target: {fileID: 3391992852931986893, guid: 785d1c62e8d1a7a4e9328d94189b799a, type: 3}
       propertyPath: m_Name
       value: Woman2-Anim2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391992852931986893, guid: 785d1c62e8d1a7a4e9328d94189b799a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

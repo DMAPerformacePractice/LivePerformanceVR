@@ -23,7 +23,7 @@ public class StageManager : MonoBehaviour
     /// <summary>
     /// Is the user currently performing?
     /// </summary>
-    public static bool userPerforming = false;
+    public bool userPerforming = false;
     public static event Action<StageManager> OnPerformanceStartEvent;
     public static event Action<StageManager> OnPerformaceEndEvent;
     public static event Action<StageManager> StartAudienceClapping;
@@ -72,6 +72,10 @@ public class StageManager : MonoBehaviour
     private float continuePerformanceTime = 2f;
     // Timer to keep track of when the above time passes.
     [SerializeField] private float continuePerformanceTimer = 0;
+
+
+    private float startPerformanceTime = 30f;
+    private float startPerformanceTimer = 0;
 
     private void Awake()
     {
@@ -133,20 +137,28 @@ public class StageManager : MonoBehaviour
 
             //Debug.Log(loudness);
             
-            if (!userPerforming && loudness < loudnessThreshold)
+            if (startPerformanceTimer < startPerformanceTime)
+            {
+                startPerformanceTimer += Time.deltaTime;
+                return;
+            }
+
+            /*if (!userPerforming && loudness < loudnessThreshold)
             {
                 return;
             }
             else
             {
                 userPerforming = true;
-            }
+                //Debug.LogError("Flipped: " + loudness);
+            }*/
 
             // If little sound is detected, user probably isn't playing
             if (loudness < loudnessThreshold)
             {
-                if (audienceClapping == false)
+                if (audienceClapping == false && (endPerformanceTimer / endPerformanceTime) >= 0.2f)
                 {
+                    Debug.Log("Play");
                     audienceClapping = true;
                     StartAudienceClapping(this);
                 }
