@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c21fbb0b46cf14999bbbc5f6d85c94, type: 3}
   m_Name: Wiggle
   m_EditorClassIdentifier: 
-  movementAnimation: {fileID: 0}
   animationNumber: 3
-  noise: {fileID: 0}
+  noise: {fileID: 8300000, guid: 341af8caafb83ad49948cb606163794c, type: 3}
