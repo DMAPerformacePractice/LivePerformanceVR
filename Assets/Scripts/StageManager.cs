@@ -118,8 +118,7 @@ public class StageManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //TrackMicrophoneAudio();
+        TrackMicrophoneAudio();
     }
 
     /// <summary>
@@ -162,15 +161,15 @@ public class StageManager : MonoBehaviour
             // If we detect sound again, they probably just stopped playing for a second or two, so reset timer
             else
             {
-                if (audienceClapping == true)
-                {
-                    audienceClapping = false;
-                    StopAudienceClapping(this);
-                }
                 // Check there wasn't just a spike in audio by running a short timer
                 continuePerformanceTimer += Time.deltaTime;
                 if (continuePerformanceTimer >= continuePerformanceTime)
                 {
+                    if (audienceClapping == true)
+                    {
+                        audienceClapping = false;
+                        StopAudienceClapping(this);
+                    }
                     endPerformanceTimer = 0;
                 }
             }
