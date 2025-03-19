@@ -73,9 +73,10 @@ public class StageManager : MonoBehaviour
     // Timer to keep track of when the above time passes.
     [SerializeField] private float continuePerformanceTimer = 0;
 
-
     private float startPerformanceTime = 30f;
     private float startPerformanceTimer = 0;
+
+    private bool automaticEndPerformance = true;
 
     private void Awake()
     {
@@ -122,7 +123,10 @@ public class StageManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TrackMicrophoneAudio();
+        if (automaticEndPerformance)
+        {
+            TrackMicrophoneAudio();
+        }
     }
 
     /// <summary>
@@ -270,14 +274,7 @@ public class StageManager : MonoBehaviour
 
     public void ToggleAutomaticEnding()
     {
-        if(endPerformanceTime >= 100)
-        {
-            endPerformanceTime = 10f;
-        }
-        else
-        {
-            endPerformanceTime = 1000f;
-        }
+        automaticEndPerformance = !automaticEndPerformance;
     }
 
     /// <summary>
