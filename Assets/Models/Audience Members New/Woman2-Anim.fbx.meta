@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: aab080e1f84672f469c0d0de9d72c25b
+guid: 4c4111bd4531d5a41800d99898f38fbb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -34,8 +34,8 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: Idle
-      takeName: Anim
-      internalID: -4423478277621330598
+      takeName: Woman2-Anim2
+      internalID: -5690333695363964105
       firstFrame: 1
       lastFrame: 60
       wrapMode: 0
@@ -63,8 +63,8 @@ ModelImporter:
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
       name: Standing Clap
-      takeName: Anim
-      internalID: -8916852187704655335
+      takeName: Woman2-Anim2
+      internalID: 7141143754642035007
       firstFrame: 61
       lastFrame: 136
       wrapMode: 0
@@ -92,8 +92,8 @@ ModelImporter:
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
       name: Seated Clap
-      takeName: Anim
-      internalID: -3571857015109082278
+      takeName: Woman2-Anim2
+      internalID: -8876777741409178464
       firstFrame: 137
       lastFrame: 182
       wrapMode: 0
@@ -121,8 +121,8 @@ ModelImporter:
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
       name: Check Phone
-      takeName: Anim
-      internalID: 5176565845972334537
+      takeName: Woman2-Anim2
+      internalID: 1290717357159057040
       firstFrame: 183
       lastFrame: 289
       wrapMode: 0
@@ -150,8 +150,8 @@ ModelImporter:
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
       name: Wiggle/Shift In Seat
-      takeName: Anim
-      internalID: -2995028946400388922
+      takeName: Woman2-Anim2
+      internalID: 6887459940020025205
       firstFrame: 290
       lastFrame: 412
       wrapMode: 0
@@ -179,8 +179,8 @@ ModelImporter:
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
       name: Yawn
-      takeName: Anim
-      internalID: -433968867254819909
+      takeName: Woman2-Anim2
+      internalID: -5335351409025363573
       firstFrame: 413
       lastFrame: 484
       wrapMode: 0
@@ -208,8 +208,8 @@ ModelImporter:
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
       name: Cough
-      takeName: Anim
-      internalID: 5841895167769655407
+      takeName: Woman2-Anim2
+      internalID: 4422151508881472530
       firstFrame: 485
       lastFrame: 545
       wrapMode: 0
@@ -237,8 +237,8 @@ ModelImporter:
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
       name: Sneeze
-      takeName: Anim
-      internalID: -3205648788403488787
+      takeName: Woman2-Anim2
+      internalID: -3989246215641430093
       firstFrame: 546
       lastFrame: 593
       wrapMode: 0
@@ -248,6 +248,35 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Repeated Seated Clap
+      takeName: Woman2-Anim2
+      internalID: 3065332536038369392
+      firstFrame: 138
+      lastFrame: 178
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

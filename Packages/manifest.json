@@ -1,13 +1,14 @@
 {
   "dependencies": {
-    "com.meta.xr.sdk.core": "72.0.0",
-    "com.meta.xr.sdk.interaction.ovr": "72.0.0",
+    "com.meta.xr.sdk.audio": "74.0.0",
+    "com.meta.xr.sdk.core": "74.0.0",
+    "com.meta.xr.sdk.interaction.ovr": "74.0.1",
     "com.unity.collab-proxy": "2.6.0",
     "com.unity.feature.development": "1.0.1",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.7.6",
     "com.unity.ugui": "1.0.0",
-    "com.unity.visualscripting": "1.9.1",
+    "com.unity.visualscripting": "1.9.6",
     "com.unity.xr.management": "4.5.0",
     "com.unity.xr.oculus": "4.2.0",
     "com.unity.modules.ai": "1.0.0",

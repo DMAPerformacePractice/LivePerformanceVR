@@ -23,7 +23,7 @@ public class StageManager : MonoBehaviour
     /// <summary>
     /// Is the user currently performing?
     /// </summary>
-    public static bool userPerforming = false;
+    public bool userPerforming = false;
     public static event Action<StageManager> OnPerformanceStartEvent;
     public static event Action<StageManager> OnPerformaceEndEvent;
     public static event Action<StageManager> StartAudienceClapping;
@@ -73,6 +73,11 @@ public class StageManager : MonoBehaviour
     // Timer to keep track of when the above time passes.
     [SerializeField] private float continuePerformanceTimer = 0;
 
+    private float startPerformanceTime = 30f;
+    private float startPerformanceTimer = 0;
+
+    private bool automaticEndPerformance = true;
+
     private void Awake()
     {
         // Load all the assets in the Resources/Interruptions folder
@@ -118,8 +123,10 @@ public class StageManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        TrackMicrophoneAudio();
+        if (automaticEndPerformance)
+        {
+            TrackMicrophoneAudio();
+        }
     }
 
     /// <summary>
@@ -134,20 +141,28 @@ public class StageManager : MonoBehaviour
 
             //Debug.Log(loudness);
             
-            if (!userPerforming && loudness < loudnessThreshold)
+            if (startPerformanceTimer < startPerformanceTime)
+            {
+                startPerformanceTimer += Time.deltaTime;
+                return;
+            }
+
+            /*if (!userPerforming && loudness < loudnessThreshold)
             {
                 return;
             }
             else
             {
                 userPerforming = true;
-            }
+                //Debug.LogError("Flipped: " + loudness);
+            }*/
 
             // If little sound is detected, user probably isn't playing
             if (loudness < loudnessThreshold)
             {
-                if (audienceClapping == false)
+                if (audienceClapping == false && (endPerformanceTimer / endPerformanceTime) >= 0.2f)
                 {
+                    Debug.Log("Play");
                     audienceClapping = true;
                     StartAudienceClapping(this);
                 }
@@ -162,15 +177,15 @@ public class StageManager : MonoBehaviour
             // If we detect sound again, they probably just stopped playing for a second or two, so reset timer
             else
             {
-                if (audienceClapping == true)
-                {
-                    audienceClapping = false;
-                    StopAudienceClapping(this);
-                }
                 // Check there wasn't just a spike in audio by running a short timer
                 continuePerformanceTimer += Time.deltaTime;
                 if (continuePerformanceTimer >= continuePerformanceTime)
                 {
+                    if (audienceClapping == true)
+                    {
+                        audienceClapping = false;
+                        StopAudienceClapping(this);
+                    }
                     endPerformanceTimer = 0;
                 }
             }
@@ -259,14 +274,7 @@ public class StageManager : MonoBehaviour
 
     public void ToggleAutomaticEnding()
     {
-        if(endPerformanceTime >= 100)
-        {
-            endPerformanceTime = 10f;
-        }
-        else
-        {
-            endPerformanceTime = 1000f;
-        }
+        automaticEndPerformance = !automaticEndPerformance;
     }
 
     /// <summary>
