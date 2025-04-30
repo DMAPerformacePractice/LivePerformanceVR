@@ -15,6 +15,17 @@ public class StageManager : MonoBehaviour
     [SerializeField] private Light stageLight;
 
     /// <summary>
+    /// The list of audience members who can be spawned in.
+    /// </summary>
+    [Tooltip("The list of audience members who can be spawned in.")]
+    [SerializeField] private GameObject[] audienceMemberPrefabs;
+
+    /// <summary>
+    /// A parent object. The children of this GameObject are just Transforms to store where to spawn the audience members.
+    /// </summary>
+    private GameObject audienceSpawnPoints;
+
+    /// <summary>
     /// Are the stage lights currently dimming?
     /// </summary>
     private bool lightsDimming = false;
@@ -138,6 +149,31 @@ public class StageManager : MonoBehaviour
             {
                 claps[i] = (AudienceInterruption)interruptions[i];
             }
+        }
+
+        // Set audienceSpawnPoints to the first object with the "Audience Spawn Points" tag found in the scene
+        // There should be only one of those
+        audienceSpawnPoints = GameObject.FindGameObjectsWithTag("Audience Spawn Points")[0];
+
+        if (audienceSpawnPoints != null)
+        {
+            // Get the transforms of all the audience spawn points (which are the children of audienceSpawnPoints)
+            Transform[] spawnPoints = audienceSpawnPoints.GetComponentsInChildren<Transform>();
+
+            // Loop through spawn points
+            // Skip i = 0 because that is the audienceSpawnPoints object, due to how GetComponentsInChildren() work
+            for (int i = 1; i < spawnPoints.Length; i++)
+            {
+                // Randomly (psudeo-random, of course) decide which audience member to spawn
+                int audienceMemberNum = UnityEngine.Random.Range(0, audienceMemberPrefabs.Length);
+
+                // Spawn the audience member
+                GameObject temp = Instantiate(audienceMemberPrefabs[audienceMemberNum], spawnPoints[i]);
+            }
+        }
+        else
+        {
+            Debug.LogError("No audience spawn point holder found. Audience members have not been spawned.");
         }
     }
 

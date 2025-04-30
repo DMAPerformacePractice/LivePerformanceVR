@@ -540,7 +540,7 @@ Transform:
   m_GameObject: {fileID: 2772125571071364559}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -609,16 +609,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3391992852931986893}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9956662, z: -0, w: -0.092999175}
-  m_LocalPosition: {x: 0.786, y: -0.088999994, z: 6.517}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0002585743, y: -1.145276, z: -0.0002943845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 8796838036298004214}
   - {fileID: 6258157183796058254}
+  - {fileID: 8796838036298004214}
   - {fileID: 6249935309063157357}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 190.672, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1797818726593072869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,8 +632,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inPerformance: 0
-  interruptionDelayTime: 30
-  interruptionVariability: 20
+  interruptionDelayTime: 60
+  interruptionVariability: 40
   clapTime: 5
 --- !u!95 &1119840574607989027
 Animator:
