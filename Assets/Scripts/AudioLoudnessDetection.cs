@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Used to keep track of the user's audio level.
+/// </summary>
 public class AudioLoudnessDetection : MonoBehaviour
 {
     public int sampleWindow = 64;

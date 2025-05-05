@@ -15,15 +15,31 @@ public class StageManager : MonoBehaviour
     [SerializeField] private Light stageLight;
 
     /// <summary>
+    /// The list of audience members who can be spawned in.
+    /// </summary>
+    [Tooltip("The list of audience members who can be spawned in.")]
+    [SerializeField] private GameObject[] audienceMemberPrefabs;
+
+    /// <summary>
+    /// A parent object. The children of this GameObject are just Transforms to store where to spawn the audience members.
+    /// </summary>
+    private GameObject audienceSpawnPoints;
+
+    /// <summary>
     /// Are the stage lights currently dimming?
     /// </summary>
     private bool lightsDimming = false;
 
     public static bool performanceStarted = false;
+
     /// <summary>
     /// Is the user currently performing?
     /// </summary>
     public bool userPerforming = false;
+
+    /// <summary>
+    /// Actions, primarily to attach audience member functions to
+    /// </summary>
     public static event Action<StageManager> OnPerformanceStartEvent;
     public static event Action<StageManager> OnPerformaceEndEvent;
     public static event Action<StageManager> StartAudienceClapping;
@@ -36,6 +52,7 @@ public class StageManager : MonoBehaviour
     /// </summary>
     [Tooltip("How long it should take for the lights to dim at the start of the performance.")]
     [SerializeField] private float dimTime = 2;
+
     /// <summary>
     /// How long it should take for the lights to brighten at the end of the performance.
     /// </summary>
@@ -47,9 +64,13 @@ public class StageManager : MonoBehaviour
     /// </summary>
     private static AudienceInterruption[] audienceInterruptions;
 
+    /// <summary>
+    /// An array containing all the clap-type AudienceInterruptions the StageManager has saved.
+    /// </summary>
     private static AudienceInterruption[] claps;
 
     [SerializeField] private AudioLoudnessDetection loudnessDetector;
+
     /// <summary>
     /// Adjusts the sensitivity of the microphone.
     /// <para>
@@ -57,25 +78,43 @@ public class StageManager : MonoBehaviour
     /// </para>
     /// </summary>
     [SerializeField] private float loudnessSensitivity = 100;
+
+    /// <summary>
+    /// How loud should the audio through the microphone be for the user to be considered playing.
+    /// </summary>
     [SerializeField] private float loudnessThreshold = 0.01f;
 
     /// <summary>
     /// How long it should be quiet before the performance is ended
     /// </summary>
     private float endPerformanceTime = 10f;
+
     /// <summary>
     /// Keeps track of how close we are to meeting <see cref="endPerformanceTime"/>
     /// </summary>
     [SerializeField] private float endPerformanceTimer = 0;
 
-    // How long should audio be loud to conclude that there wasn't just a spike in audio when checking on whether to reset endPerformanceTimer or not.
+    /// <summary>
+    /// How long should audio be above <c>loudnessThreshold</c> to conclude that there wasn't just a spike in audio when checking on whether to reset endPerformanceTimer or not.
+    /// </summary>
     private float continuePerformanceTime = 2f;
-    // Timer to keep track of when the above time passes.
+
+    /// <summary>
+    /// Timer to keep track of when the <c>continuePerformanceTime</c> passes.
+    /// </summary>
     [SerializeField] private float continuePerformanceTimer = 0;
 
+    /// <summary>
+    /// How long to wait before starting to track microphone audio
+    /// </summary>
     private float startPerformanceTime = 30f;
+
+    /// <summary>
+    /// Timer to keep track of when the <c>startPerformanceTime</c> passes.
+    /// </summary>
     private float startPerformanceTimer = 0;
 
+    // Used for debug purposes
     private bool automaticEndPerformance = true;
 
     private void Awake()
@@ -96,10 +135,10 @@ public class StageManager : MonoBehaviour
             }
         }
 
-        // Load all the assets in the Resources/Interruptions folder
+        // Load all the assets in the Resources/Interruptions/Claps folder
         interruptions = Resources.LoadAll("Interruptions/Claps");
 
-        // Make sure the audienceInterruptions array is the proper length
+        // Make sure the claps array is the proper length
         claps = new AudienceInterruption[interruptions.Length];
 
         // Go through all the loaded assets and save all the AudienceInterruptions into the appropriate array
@@ -110,6 +149,57 @@ public class StageManager : MonoBehaviour
             {
                 claps[i] = (AudienceInterruption)interruptions[i];
             }
+        }
+
+        // Set audienceSpawnPoints to the first object with the "Audience Spawn Points" tag found in the scene
+        // There should be only one of those
+        audienceSpawnPoints = GameObject.FindGameObjectsWithTag("Audience Spawn Points")[0];
+
+        if (audienceSpawnPoints != null)
+        {
+            // Get the transforms of all the audience spawn points (which are the children of audienceSpawnPoints)
+            Transform[] spawnPoints = audienceSpawnPoints.GetComponentsInChildren<Transform>();
+
+            // Load all the assets in the Resources/Animator Overrides folder
+            var animatorOverrideResources = Resources.LoadAll("Animator Overrides");
+
+            // Make an array to hold all the AnimatorOverrideControllers from the assets we just loaded
+            AnimatorOverrideController[] animatorOverrides = new AnimatorOverrideController[animatorOverrideResources.Length];
+
+            // Go through all the loaded assets and save all the AnimatorOverideControllers into the appropriate array
+            // (They should all be AnimatorOverrideControllers)
+            for (int i = 0; i < animatorOverrideResources.Length; i++)
+            {
+                if (animatorOverrideResources[i] is AnimatorOverrideController)
+                {
+                    animatorOverrides[i] = (AnimatorOverrideController)animatorOverrideResources[i];
+                }
+            }
+
+            // Loop through spawn points
+            // Skip i = 0 because that is the audienceSpawnPoints object, due to how GetComponentsInChildren() work
+            for (int i = 1; i < spawnPoints.Length; i++)
+            {
+                // Randomly (psudeo-random, of course) decide which audience member to spawn
+                int audienceMemberNum = UnityEngine.Random.Range(0, audienceMemberPrefabs.Length);
+
+                // Spawn the audience member
+                GameObject temp = Instantiate(audienceMemberPrefabs[audienceMemberNum], spawnPoints[i]);
+
+                // Randomly chose which set of animations to use for this new audience member
+                int animatorOverrideNum = UnityEngine.Random.Range(0, animatorOverrides.Length + 1);
+
+                // If the animaterOverrideNum == animatorOverrides.Length, just use the base animations
+                if (animatorOverrideNum < animatorOverrides.Length)
+                {
+                    // Change the set of animations the audience member will use
+                    temp.GetComponent<Animator>().runtimeAnimatorController = animatorOverrides[animatorOverrideNum];
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("No audience spawn point holder found. Audience members have not been spawned.");
         }
     }
 
@@ -138,35 +228,27 @@ public class StageManager : MonoBehaviour
         {
             // Get the loudness and boost it to more reasonable levels
             float loudness = loudnessDetector.GetLoudnessFromMicrophone() * loudnessSensitivity;
-
-            //Debug.Log(loudness);
             
+            // Only start tracking audio after a certain amount of time (so that the user can actually start playing)
             if (startPerformanceTimer < startPerformanceTime)
             {
                 startPerformanceTimer += Time.deltaTime;
                 return;
             }
 
-            /*if (!userPerforming && loudness < loudnessThreshold)
-            {
-                return;
-            }
-            else
-            {
-                userPerforming = true;
-                //Debug.LogError("Flipped: " + loudness);
-            }*/
-
             // If little sound is detected, user probably isn't playing
             if (loudness < loudnessThreshold)
             {
+                // If the audience isn't already clapping & the endPerformanceTimer is at least 20% done, start clapping
                 if (audienceClapping == false && (endPerformanceTimer / endPerformanceTime) >= 0.2f)
                 {
-                    Debug.Log("Play");
                     audienceClapping = true;
                     StartAudienceClapping(this);
                 }
+
+                // Reset the continuePerformanceTimer
                 continuePerformanceTimer = 0;
+
                 // If they don't make sound for an extended period of time, they definitely aren't playing, so end the performance
                 endPerformanceTimer += Time.deltaTime;
                 if (endPerformanceTimer >= endPerformanceTime)
@@ -206,6 +288,8 @@ public class StageManager : MonoBehaviour
             // Trigger OnPerformanceStartEvent event
             OnPerformanceStartEvent(this);
             performanceStarted = true;
+
+            // If we aren't dimming the lights, dim them
             if (lightsDimming == false)
             {
                 StartCoroutine(DimLights());
@@ -227,6 +311,8 @@ public class StageManager : MonoBehaviour
             // Trigger OnPerformanceEndEvent event
             OnPerformaceEndEvent(this);
             performanceStarted = false;
+
+            // Turn the lights back on
             StartCoroutine(BrightenLights());
         }
     }
@@ -272,6 +358,12 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Toggles whether the performance should automatically end based on user sound levels or not.
+    /// <para>
+    ///     Meant for debug purposes only.
+    /// </para>
+    /// </summary>
     public void ToggleAutomaticEnding()
     {
         automaticEndPerformance = !automaticEndPerformance;
@@ -286,6 +378,10 @@ public class StageManager : MonoBehaviour
         return audienceInterruptions;
     }
 
+    /// <summary>
+    /// Gets all of the clap-type AudienceInterruptions the StageManager class has saved.
+    /// </summary>
+    /// <returns>The array of all clap-type AudienceInterruptions the StageManager class has saved.</returns>
     public static AudienceInterruption[] GetClaps()
     {
         return claps;

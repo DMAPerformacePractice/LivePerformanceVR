@@ -45,7 +45,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 8733012947245223898, guid: d9f7867ac7d64494d940eb45ca9a5d99, type: 3}
+  m_Motion: {fileID: 1982520502232830019, guid: a8c563bbd018bf5489ce08a26c1b9753, type: 3}
   m_Tag: Clap
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -99,7 +99,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7699468670512747321, guid: d9f7867ac7d64494d940eb45ca9a5d99, type: 3}
+  m_Motion: {fileID: 7899200101804422686, guid: a8c563bbd018bf5489ce08a26c1b9753, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -154,7 +154,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -6345644205816716910, guid: d9f7867ac7d64494d940eb45ca9a5d99, type: 3}
+  m_Motion: {fileID: -5097300606835712583, guid: a8c563bbd018bf5489ce08a26c1b9753, type: 3}
   m_Tag: Clap
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -208,7 +208,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 6181323589695693762, guid: d9f7867ac7d64494d940eb45ca9a5d99, type: 3}
+  m_Motion: {fileID: -5064980082614419655, guid: a8c563bbd018bf5489ce08a26c1b9753, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -293,7 +293,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -6707008010501294050, guid: d9f7867ac7d64494d940eb45ca9a5d99, type: 3}
+  m_Motion: {fileID: 6143385877889840709, guid: a8c563bbd018bf5489ce08a26c1b9753, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -305,7 +305,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Saplin2-Anims
+  m_Name: Audience Member Anims
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Interruption Number
@@ -393,7 +393,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 6455900128082980096, guid: d9f7867ac7d64494d940eb45ca9a5d99, type: 3}
+  m_Motion: {fileID: -8537531000544394625, guid: a8c563bbd018bf5489ce08a26c1b9753, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -420,7 +420,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7196883341831424920, guid: d9f7867ac7d64494d940eb45ca9a5d99, type: 3}
+  m_Motion: {fileID: -461629362346306203, guid: a8c563bbd018bf5489ce08a26c1b9753, type: 3}
   m_Tag: Clap
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -478,7 +478,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 3261558483056937205, guid: f974a166ee22ee442b27e336b2a3a852, type: 3}
+  m_Motion: {fileID: -6775884027671718737, guid: f893821df6414d445935ac53051d63e4, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -532,7 +532,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -3829107826699077163, guid: d9f7867ac7d64494d940eb45ca9a5d99, type: 3}
+  m_Motion: {fileID: -5932667637624912851, guid: a8c563bbd018bf5489ce08a26c1b9753, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
