@@ -135,10 +135,10 @@ public class StageManager : MonoBehaviour
             }
         }
 
-        // Load all the assets in the Resources/Interruptions folder
+        // Load all the assets in the Resources/Interruptions/Claps folder
         interruptions = Resources.LoadAll("Interruptions/Claps");
 
-        // Make sure the audienceInterruptions array is the proper length
+        // Make sure the claps array is the proper length
         claps = new AudienceInterruption[interruptions.Length];
 
         // Go through all the loaded assets and save all the AudienceInterruptions into the appropriate array
@@ -160,6 +160,22 @@ public class StageManager : MonoBehaviour
             // Get the transforms of all the audience spawn points (which are the children of audienceSpawnPoints)
             Transform[] spawnPoints = audienceSpawnPoints.GetComponentsInChildren<Transform>();
 
+            // Load all the assets in the Resources/Animator Overrides folder
+            var animatorOverrideResources = Resources.LoadAll("Animator Overrides");
+
+            // Make an array to hold all the AnimatorOverrideControllers from the assets we just loaded
+            AnimatorOverrideController[] animatorOverrides = new AnimatorOverrideController[animatorOverrideResources.Length];
+
+            // Go through all the loaded assets and save all the AnimatorOverideControllers into the appropriate array
+            // (They should all be AnimatorOverrideControllers)
+            for (int i = 0; i < animatorOverrideResources.Length; i++)
+            {
+                if (animatorOverrideResources[i] is AnimatorOverrideController)
+                {
+                    animatorOverrides[i] = (AnimatorOverrideController)animatorOverrideResources[i];
+                }
+            }
+
             // Loop through spawn points
             // Skip i = 0 because that is the audienceSpawnPoints object, due to how GetComponentsInChildren() work
             for (int i = 1; i < spawnPoints.Length; i++)
@@ -169,6 +185,16 @@ public class StageManager : MonoBehaviour
 
                 // Spawn the audience member
                 GameObject temp = Instantiate(audienceMemberPrefabs[audienceMemberNum], spawnPoints[i]);
+
+                // Randomly chose which set of animations to use for this new audience member
+                int animatorOverrideNum = UnityEngine.Random.Range(0, animatorOverrides.Length + 1);
+
+                // If the animaterOverrideNum == animatorOverrides.Length, just use the base animations
+                if (animatorOverrideNum < animatorOverrides.Length)
+                {
+                    // Change the set of animations the audience member will use
+                    temp.GetComponent<Animator>().runtimeAnimatorController = animatorOverrides[animatorOverrideNum];
+                }
             }
         }
         else
