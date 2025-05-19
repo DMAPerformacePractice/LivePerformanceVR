@@ -42,3 +42,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Wrist UI
+    uniqueID: 2008273633
+    locked: 0
