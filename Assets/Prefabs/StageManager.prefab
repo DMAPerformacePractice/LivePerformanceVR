@@ -47,14 +47,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageLight: {fileID: 0}
   audienceMemberPrefabs:
-  - {fileID: 5458331706916025664, guid: 5f4e2051882bc5748b973b9a52cc44df, type: 3}
-  - {fileID: 6246801747662363407, guid: 9568aa83e4b83c6478bcf610ebf39759, type: 3}
-  - {fileID: 5317317200757737562, guid: 7346c0fa54534a44b9b4c7fbea249d7c, type: 3}
-  - {fileID: 8322308255901406299, guid: 48a0674019f03d240bb6eb616b413bda, type: 3}
-  - {fileID: 2489375240318703638, guid: 12072c1e9678b3d48b169b4ca5e5435f, type: 3}
-  - {fileID: 158729330260115501, guid: 0c5318ad40e590c40bc8940e94c9da02, type: 3}
-  - {fileID: 8156066114807944110, guid: 151db714ba439af4f825ee1e7a0ff15c, type: 3}
-  - {fileID: 962394106455476819, guid: e9de3b554d9940944993f95eae221563, type: 3}
+  - {fileID: 1935584607200288678, guid: 5f4e2051882bc5748b973b9a52cc44df, type: 3}
+  - {fileID: 8594071886748805838, guid: 7e506b0ba7edae94e957cad1ac8cee0b, type: 3}
+  - {fileID: 6024070185833467258, guid: 9568aa83e4b83c6478bcf610ebf39759, type: 3}
+  - {fileID: 4378331372775969725, guid: 48a0674019f03d240bb6eb616b413bda, type: 3}
+  - {fileID: 4725783386394015962, guid: 12072c1e9678b3d48b169b4ca5e5435f, type: 3}
+  - {fileID: 7830403670297616072, guid: 0c5318ad40e590c40bc8940e94c9da02, type: 3}
+  - {fileID: 4290211951260495555, guid: 151db714ba439af4f825ee1e7a0ff15c, type: 3}
+  - {fileID: 2456137027573806032, guid: 9a0d386cab2fa0d4bada8eaa8de5edd4, type: 3}
+  - {fileID: 8695054238466296617, guid: e9de3b554d9940944993f95eae221563, type: 3}
   userPerforming: 0
   dimTime: 5
   brightenTime: 2
