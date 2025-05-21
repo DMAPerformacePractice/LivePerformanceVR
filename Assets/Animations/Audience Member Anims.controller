@@ -45,7 +45,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 4061839508520268033, guid: 7bfcb59e694c8c1498d6d7bb6aa34ac6, type: 3}
   m_Tag: Clap
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -393,7 +393,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 4723148322894068154, guid: 9897f6c8eec6d9b4ba8664cbf125ef78, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
