@@ -9,10 +9,16 @@ using UnityEngine;
 public class StageManager : MonoBehaviour
 {
     /// <summary>
-    /// The primary stage light, may be swapped to an array later on when more lights are added.
+    /// The center stage light.
     /// </summary>
-    [Tooltip("The primary stage light.")]
-    [SerializeField] private Light stageLight;
+    [Tooltip("The center stage light.")]
+    [SerializeField] private Light centerStageLight;
+
+    /// <summary>
+    /// The general room light.
+    /// </summary>
+    [Tooltip("The general room light.")]
+    [SerializeField] private Light roomLight;
 
     /// <summary>
     /// The list of audience members who can be spawned in.
@@ -329,7 +335,8 @@ public class StageManager : MonoBehaviour
 
         // Over the course of dimTime seconds, reduce the intensity of the lights from 1 to 0.5f
         while (t < dimTime) {
-            stageLight.intensity = Mathf.Lerp(1, 0.5f, t / dimTime);
+            roomLight.intensity = Mathf.Lerp(1.35f, 0.2f, t / dimTime);
+            centerStageLight.intensity = Mathf.Lerp(3, 6f, t / dimTime);
 
             t += Time.deltaTime;
 
@@ -350,7 +357,8 @@ public class StageManager : MonoBehaviour
         // Over the course of brightenTime seconds, increase the intensity of the lights from 0.5f to 1
         while (t < brightenTime)
         {
-            stageLight.intensity = Mathf.Lerp(0.5f, 1, t / brightenTime);
+            roomLight.intensity = Mathf.Lerp(0.2f, 1.35f, t / brightenTime);
+            centerStageLight.intensity = Mathf.Lerp(6f, 3, t / brightenTime);
 
             t += Time.deltaTime;
 

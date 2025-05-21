@@ -45,11 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f7539e450d1f54a95df8e78835e68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageLight: {fileID: 0}
+  centerStageLight: {fileID: 0}
+  roomLights: {fileID: 0}
   audienceMemberPrefabs:
   - {fileID: 1935584607200288678, guid: 5f4e2051882bc5748b973b9a52cc44df, type: 3}
   - {fileID: 8594071886748805838, guid: 7e506b0ba7edae94e957cad1ac8cee0b, type: 3}
   - {fileID: 6024070185833467258, guid: 9568aa83e4b83c6478bcf610ebf39759, type: 3}
+  - {fileID: 8856409170656467380, guid: 7346c0fa54534a44b9b4c7fbea249d7c, type: 3}
   - {fileID: 4378331372775969725, guid: 48a0674019f03d240bb6eb616b413bda, type: 3}
   - {fileID: 4725783386394015962, guid: 12072c1e9678b3d48b169b4ca5e5435f, type: 3}
   - {fileID: 7830403670297616072, guid: 0c5318ad40e590c40bc8940e94c9da02, type: 3}
