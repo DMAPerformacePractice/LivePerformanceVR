@@ -182,15 +182,17 @@ public class StageManager : MonoBehaviour
                 }
             }
 
+            List<GameObject> unusedAudienceMemberPrefabs = new List<GameObject>(audienceMemberPrefabs);
+
             // Loop through spawn points
             // Skip i = 0 because that is the audienceSpawnPoints object, due to how GetComponentsInChildren() work
-            for (int i = 1; i < spawnPoints.Length; i++)
+            for (int i = 1; i < spawnPoints.Length && unusedAudienceMemberPrefabs.Count != 0; i++)
             {
                 // Randomly (psudeo-random, of course) decide which audience member to spawn
-                int audienceMemberNum = UnityEngine.Random.Range(0, audienceMemberPrefabs.Length);
+                int audienceMemberNum = UnityEngine.Random.Range(0, unusedAudienceMemberPrefabs.Count);
 
                 // Spawn the audience member
-                GameObject temp = Instantiate(audienceMemberPrefabs[audienceMemberNum], spawnPoints[i]);
+                GameObject temp = Instantiate(unusedAudienceMemberPrefabs[audienceMemberNum], spawnPoints[i]);
 
                 // Randomly chose which set of animations to use for this new audience member
                 int animatorOverrideNum = UnityEngine.Random.Range(0, animatorOverrides.Length + 1);
@@ -201,6 +203,8 @@ public class StageManager : MonoBehaviour
                     // Change the set of animations the audience member will use
                     temp.GetComponent<Animator>().runtimeAnimatorController = animatorOverrides[animatorOverrideNum];
                 }
+
+                unusedAudienceMemberPrefabs.RemoveAt(audienceMemberNum);
             }
         }
         else
