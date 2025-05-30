@@ -23,17 +23,17 @@ MonoBehaviour:
   textPrimaryInvertedColor: {r: 0, g: 0, b: 0, a: 1}
   textSecondaryInvertedColor: {r: 0, g: 0, b: 0, a: 0.69803923}
   primaryButton:
-    normal: {r: 0, g: 0.4784314, b: 1, a: 1}
-    highlighted: {r: 0.24705884, g: 0.48235297, b: 0.9176471, a: 1}
-    pressed: {r: 0, g: 0.4784314, b: 1, a: 1}
-    selected: {r: 0, g: 0.4784314, b: 1, a: 1}
-    disabled: {r: 0, g: 0.4784314, b: 1, a: 1}
+    normal: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
+    highlighted: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
+    pressed: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
+    selected: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
+    disabled: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
   secondaryButton:
-    normal: {r: 0, g: 0.4784314, b: 1, a: 1}
-    highlighted: {r: 0, g: 0.4784314, b: 1, a: 1}
-    pressed: {r: 0, g: 0.4784314, b: 1, a: 1}
-    selected: {r: 0, g: 0.4784314, b: 1, a: 1}
-    disabled: {r: 0, g: 0.4784314, b: 1, a: 1}
+    normal: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
+    highlighted: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
+    pressed: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
+    selected: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
+    disabled: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
   borderlessButton:
     normal: {r: 0, g: 0.4784314, b: 1, a: 0}
     highlighted: {r: 0, g: 0.4784314, b: 1, a: 1}
@@ -46,9 +46,9 @@ MonoBehaviour:
     pressed: {r: 0.73333335, g: 0.23137257, b: 0.29411766, a: 1}
     selected: {r: 0.6666667, g: 0.039215688, b: 0.11764707, a: 1}
     disabled: {r: 0.3254902, g: 0.12941177, b: 0.18823531, a: 1}
-  textFontBold: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  textFontMedium: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  textFontRegular: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  textFontBold: {fileID: 11400000, guid: 3618d515d66974088a5d6190cc0c4c38, type: 2}
+  textFontMedium: {fileID: 11400000, guid: 3618d515d66974088a5d6190cc0c4c38, type: 2}
+  textFontRegular: {fileID: 11400000, guid: 3618d515d66974088a5d6190cc0c4c38, type: 2}
   acPrimaryButton: {fileID: 9100000, guid: 2d02b5eb0b5208844a26b98b7e8df496, type: 2}
   acSecondaryButton: {fileID: 9100000, guid: 904803d3caed3d244ba98bbd32a27c83, type: 2}
   acBorderlessButton: {fileID: 9100000, guid: 39a5bab42ba77e642894b824eedd6fd3, type: 2}
