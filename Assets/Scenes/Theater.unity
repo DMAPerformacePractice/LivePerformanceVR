@@ -8489,7 +8489,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1046134193}
         m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: ToggleAutomaticEnding
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16025,7 +16025,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Toggle Automatic Ending
+  m_text: Currently Unused
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 661e237d7a7e145009955eed2d9e7992, type: 2}
   m_sharedMaterial: {fileID: 4278865669906893509, guid: 661e237d7a7e145009955eed2d9e7992, type: 2}

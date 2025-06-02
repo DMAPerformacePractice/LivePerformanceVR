@@ -34,7 +34,7 @@ public class AudienceMemberManager : MonoBehaviour
     private Animator animator;
 
     /// <summary>
-    /// Whether the audience member is currently running and interruption animation or not
+    /// Whether the audience member is currently running an interruption animation or not
     /// </summary>
     private bool inInterruption = false;
 
@@ -54,12 +54,6 @@ public class AudienceMemberManager : MonoBehaviour
     /// </summary>
     [Tooltip("Add randomness to interruption time. Interruptions will happen randomly based on a number of seconds outlined by the interval [interruptionDelayTime - 2, interruptionDelayTime + 2].")]
     [SerializeField] private float interruptionVariability = 20;
-
-    /// <summary>
-    /// How long the audience will take to reach max clapping volume.
-    /// </summary>
-    [Tooltip("How long the audience will take to reach max clapping volume.")]
-    [SerializeField] private float clapTime = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -107,7 +101,7 @@ public class AudienceMemberManager : MonoBehaviour
     {
         inPerformance = false;
         StopCoroutine(RunAudienceMember());
-        animator.SetBool("Not Clapping", true);
+        animator.SetBool("Clapping", true);
         audioSource.loop = false;
         StopClapping(stageManager);
     }
@@ -130,8 +124,6 @@ public class AudienceMemberManager : MonoBehaviour
 
                 if (inPerformance)
                 {
-                    animator.SetBool("Not Clapping", true);
-
                     // Choose and play a random interruption
                     float rand = Random.value;
                     int interruptionNumber = Mathf.CeilToInt(rand * audienceInterruptions.Length);
@@ -202,7 +194,7 @@ public class AudienceMemberManager : MonoBehaviour
             // Play clapping animation
             animator.SetInteger("Interruption Number", claps[1].getAnimationNumber());
             animator.SetTrigger("Animation Change");
-            animator.SetBool("Not Clapping", false);
+            animator.SetBool("Clapping", true);
         }
     }
 
@@ -220,7 +212,7 @@ public class AudienceMemberManager : MonoBehaviour
             audioSource.Stop();
 
             // Stop the clapping animation
-            animator.SetBool("Not Clapping", true);
+            animator.SetBool("Clapping", false);
         }
     }
 }
