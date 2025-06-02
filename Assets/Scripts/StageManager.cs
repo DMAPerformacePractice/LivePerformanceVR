@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Manages all matters of the stage, such as the lights and keeping track of when a performance starts and ends.
@@ -64,6 +65,8 @@ public class StageManager : MonoBehaviour
     /// </summary>
     [Tooltip("How long it should take for the lights to brighten at the end of the performance.")]
     [SerializeField] private float brightenTime = 2;
+
+    private bool lightsOn = true;
 
     /// <summary>
     /// An array containing all the AudienceInterruptions the StageManager has saved.
@@ -325,6 +328,8 @@ public class StageManager : MonoBehaviour
             // Turn the lights back on
             StartCoroutine(BrightenLights());
         }
+
+        StartCoroutine(WaitToSwitchScene());
     }
 
     /// <summary>
@@ -348,6 +353,7 @@ public class StageManager : MonoBehaviour
         }
 
         lightsDimming = false;
+        lightsOn = false;
     }
 
     /// <summary>
@@ -368,6 +374,21 @@ public class StageManager : MonoBehaviour
 
             yield return null;
         }
+
+        lightsOn = true;
+    }
+
+    private IEnumerator WaitToSwitchScene()
+    {
+        yield return new WaitUntil(() =>
+        {
+            if (lightsOn)
+                return true;
+
+            return false;
+        });
+
+        SceneManager.LoadScene(0);
     }
 
     /// <summary>
