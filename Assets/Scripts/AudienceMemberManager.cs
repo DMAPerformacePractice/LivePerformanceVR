@@ -81,10 +81,12 @@ public class AudienceMemberManager : MonoBehaviour
         StageManager.StopAudienceClapping += StopClapping;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-
+        StageManager.OnPerformanceStartEvent -= StartAudienceMember;
+        StageManager.OnPerformaceEndEvent -= StopAudienceMember;
+        StageManager.StartAudienceClapping -= StartClapping;
+        StageManager.StopAudienceClapping -= StopClapping;
     }
 
     /// <summary>

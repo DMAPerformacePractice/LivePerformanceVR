@@ -4502,7 +4502,7 @@ GameObject:
   - component: {fileID: 1120929044769248684}
   m_Layer: 0
   m_Name: WhiteJacket
-  m_TagString: Untagged
+  m_TagString: Audience Member
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

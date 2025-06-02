@@ -388,6 +388,35 @@ public class StageManager : MonoBehaviour
             return false;
         });
 
+        var t = 0f;
+
+        while (t < 1)
+        {
+            t += Time.deltaTime;
+
+            if (t > 0.5f)
+            {
+                roomLight.intensity = Mathf.Lerp(1.35f, 0f, (t - 0.5f) / 0.5f);
+                centerStageLight.intensity = Mathf.Lerp(3, 0f, (t - 0.5f) / 0.5f);
+            }
+
+            yield return null;
+        }
+
+        if (audienceSpawnPoints != null)
+        {
+            // Get the transforms of all the children of audienceSpawnPoints (this will be spawn points, as well as the audience members themselves)
+            Transform[] spawnPoints = audienceSpawnPoints.GetComponentsInChildren<Transform>();
+
+            for (int i = 0; i < spawnPoints.Length; i++)
+            {
+                if (spawnPoints[i].gameObject.tag == "Audience Member")
+                {
+                    Destroy(spawnPoints[i].gameObject);
+                }
+            }
+        }
+
         SceneManager.LoadScene(0);
     }
 

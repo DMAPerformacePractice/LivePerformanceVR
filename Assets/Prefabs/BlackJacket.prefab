@@ -861,7 +861,7 @@ GameObject:
   - component: {fileID: 3966859663797466543}
   m_Layer: 0
   m_Name: BlackJacket
-  m_TagString: Untagged
+  m_TagString: Audience Member
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

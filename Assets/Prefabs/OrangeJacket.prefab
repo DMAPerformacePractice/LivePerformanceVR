@@ -4285,7 +4285,7 @@ GameObject:
   - component: {fileID: 3228798967524382801}
   m_Layer: 0
   m_Name: OrangeJacket
-  m_TagString: Untagged
+  m_TagString: Audience Member
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
