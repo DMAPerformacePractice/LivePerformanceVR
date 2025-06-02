@@ -62,8 +62,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 7
     m_ConditionEvent: Interruption Number
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: Not Clapping
+  - m_ConditionMode: 2
+    m_ConditionEvent: Clapping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2338797481451986636}
@@ -256,8 +256,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Animation Change
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: Not Clapping
+  - m_ConditionMode: 1
+    m_ConditionEvent: Clapping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 952194436312739147}
@@ -313,25 +313,25 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Animation Change
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Stop Clapping
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: Not Clapping
+    m_Controller: {fileID: 0}
+  - m_Name: Clapping
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
-    m_Controller: {fileID: 9100000}
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -434,8 +434,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: Not Clapping
+  - m_ConditionMode: 1
+    m_ConditionEvent: Clapping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6893607814813897635}

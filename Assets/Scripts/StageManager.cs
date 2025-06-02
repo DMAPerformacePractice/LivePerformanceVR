@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Manages all matters of the stage, such as the lights and keeping track of when a performance starts and ends.
@@ -51,8 +52,6 @@ public class StageManager : MonoBehaviour
     public static event Action<StageManager> StartAudienceClapping;
     public static event Action<StageManager> StopAudienceClapping;
 
-    private bool audienceClapping = false;
-
     /// <summary>
     /// How long it should take for the lights to dim at the start of the performance.
     /// </summary>
@@ -65,6 +64,8 @@ public class StageManager : MonoBehaviour
     [Tooltip("How long it should take for the lights to brighten at the end of the performance.")]
     [SerializeField] private float brightenTime = 2;
 
+    private bool lightsOn = true;
+
     /// <summary>
     /// An array containing all the AudienceInterruptions the StageManager has saved.
     /// </summary>
@@ -74,54 +75,6 @@ public class StageManager : MonoBehaviour
     /// An array containing all the clap-type AudienceInterruptions the StageManager has saved.
     /// </summary>
     private static AudienceInterruption[] claps;
-
-    [SerializeField] private AudioLoudnessDetection loudnessDetector;
-
-    /// <summary>
-    /// Adjusts the sensitivity of the microphone.
-    /// <para>
-    /// By default microphone audio comes in super low, so it is recommended to set this value high to get any sort of feedback.
-    /// </para>
-    /// </summary>
-    [SerializeField] private float loudnessSensitivity = 100;
-
-    /// <summary>
-    /// How loud should the audio through the microphone be for the user to be considered playing.
-    /// </summary>
-    [SerializeField] private float loudnessThreshold = 0.01f;
-
-    /// <summary>
-    /// How long it should be quiet before the performance is ended
-    /// </summary>
-    private float endPerformanceTime = 10f;
-
-    /// <summary>
-    /// Keeps track of how close we are to meeting <see cref="endPerformanceTime"/>
-    /// </summary>
-    [SerializeField] private float endPerformanceTimer = 0;
-
-    /// <summary>
-    /// How long should audio be above <c>loudnessThreshold</c> to conclude that there wasn't just a spike in audio when checking on whether to reset endPerformanceTimer or not.
-    /// </summary>
-    private float continuePerformanceTime = 2f;
-
-    /// <summary>
-    /// Timer to keep track of when the <c>continuePerformanceTime</c> passes.
-    /// </summary>
-    [SerializeField] private float continuePerformanceTimer = 0;
-
-    /// <summary>
-    /// How long to wait before starting to track microphone audio
-    /// </summary>
-    private float startPerformanceTime = 30f;
-
-    /// <summary>
-    /// Timer to keep track of when the <c>startPerformanceTime</c> passes.
-    /// </summary>
-    private float startPerformanceTimer = 0;
-
-    // Used for debug purposes
-    private bool automaticEndPerformance = true;
 
     private void Awake()
     {
@@ -216,72 +169,13 @@ public class StageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Intialize loudnessDetector
-        loudnessDetector = GetComponent<AudioLoudnessDetection>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (automaticEndPerformance)
-        {
-            TrackMicrophoneAudio();
-        }
-    }
 
-    /// <summary>
-    /// Tracks the audio from the microphone, and automatically ends the performance if there is no sound for <see cref="endPerformanceTime"/> seconds.
-    /// </summary>
-    private void TrackMicrophoneAudio()
-    {
-        if (performanceStarted)
-        {
-            // Get the loudness and boost it to more reasonable levels
-            float loudness = loudnessDetector.GetLoudnessFromMicrophone() * loudnessSensitivity;
-            
-            // Only start tracking audio after a certain amount of time (so that the user can actually start playing)
-            if (startPerformanceTimer < startPerformanceTime)
-            {
-                startPerformanceTimer += Time.deltaTime;
-                return;
-            }
-
-            // If little sound is detected, user probably isn't playing
-            if (loudness < loudnessThreshold)
-            {
-                // If the audience isn't already clapping & the endPerformanceTimer is at least 20% done, start clapping
-                if (audienceClapping == false && (endPerformanceTimer / endPerformanceTime) >= 0.2f)
-                {
-                    audienceClapping = true;
-                    StartAudienceClapping(this);
-                }
-
-                // Reset the continuePerformanceTimer
-                continuePerformanceTimer = 0;
-
-                // If they don't make sound for an extended period of time, they definitely aren't playing, so end the performance
-                endPerformanceTimer += Time.deltaTime;
-                if (endPerformanceTimer >= endPerformanceTime)
-                {
-                    EndPerformance();
-                }
-            }
-            // If we detect sound again, they probably just stopped playing for a second or two, so reset timer
-            else
-            {
-                // Check there wasn't just a spike in audio by running a short timer
-                continuePerformanceTimer += Time.deltaTime;
-                if (continuePerformanceTimer >= continuePerformanceTime)
-                {
-                    if (audienceClapping == true)
-                    {
-                        audienceClapping = false;
-                        StopAudienceClapping(this);
-                    }
-                    endPerformanceTimer = 0;
-                }
-            }
-        }
     }
 
     /// <summary>
@@ -325,6 +219,8 @@ public class StageManager : MonoBehaviour
             // Turn the lights back on
             StartCoroutine(BrightenLights());
         }
+
+        StartCoroutine(WaitToSwitchScene());
     }
 
     /// <summary>
@@ -348,6 +244,7 @@ public class StageManager : MonoBehaviour
         }
 
         lightsDimming = false;
+        lightsOn = false;
     }
 
     /// <summary>
@@ -368,17 +265,50 @@ public class StageManager : MonoBehaviour
 
             yield return null;
         }
+
+        lightsOn = true;
     }
 
-    /// <summary>
-    /// Toggles whether the performance should automatically end based on user sound levels or not.
-    /// <para>
-    ///     Meant for debug purposes only.
-    /// </para>
-    /// </summary>
-    public void ToggleAutomaticEnding()
+    private IEnumerator WaitToSwitchScene()
     {
-        automaticEndPerformance = !automaticEndPerformance;
+        yield return new WaitUntil(() =>
+        {
+            if (lightsOn)
+                return true;
+
+            return false;
+        });
+
+        var t = 0f;
+
+        while (t < 1)
+        {
+            t += Time.deltaTime;
+
+            if (t > 0.5f)
+            {
+                roomLight.intensity = Mathf.Lerp(1.35f, 0f, (t - 0.5f) / 0.5f);
+                centerStageLight.intensity = Mathf.Lerp(3, 0f, (t - 0.5f) / 0.5f);
+            }
+
+            yield return null;
+        }
+
+        if (audienceSpawnPoints != null)
+        {
+            // Get the transforms of all the children of audienceSpawnPoints (this will be spawn points, as well as the audience members themselves)
+            Transform[] spawnPoints = audienceSpawnPoints.GetComponentsInChildren<Transform>();
+
+            for (int i = 0; i < spawnPoints.Length; i++)
+            {
+                if (spawnPoints[i].gameObject.tag == "Audience Member")
+                {
+                    Destroy(spawnPoints[i].gameObject);
+                }
+            }
+        }
+
+        SceneManager.LoadScene(0);
     }
 
     /// <summary>

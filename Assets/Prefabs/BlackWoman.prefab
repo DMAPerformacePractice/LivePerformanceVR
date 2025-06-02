@@ -2315,7 +2315,7 @@ GameObject:
   - component: {fileID: 96223173214772091}
   m_Layer: 0
   m_Name: BlackWoman
-  m_TagString: Untagged
+  m_TagString: Audience Member
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

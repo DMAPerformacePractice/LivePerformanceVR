@@ -4253,7 +4253,7 @@ GameObject:
   - component: {fileID: 5571573574811233668}
   m_Layer: 0
   m_Name: BlackMan
-  m_TagString: Untagged
+  m_TagString: Audience Member
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
