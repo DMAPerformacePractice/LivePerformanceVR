@@ -302,6 +302,16 @@ public class StageManager : MonoBehaviour
             return false;
         });
 
+        yield return new WaitForSeconds(0.5f);
+
+        StartAudienceClapping(this);
+
+        yield return new WaitForSeconds(5);
+
+        StopAudienceClapping(this);
+
+        yield return new WaitForSeconds(0.5f);
+
         var t = 0f;
 
         while (t < 1)
