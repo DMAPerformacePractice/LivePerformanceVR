@@ -86,7 +86,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8058709218563100968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +213,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -182, y: 0}
+  m_AnchoredPosition: {x: -301, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8024110536404605728
@@ -244,7 +244,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tap your head to end the performance and go back to the main menu.
+  m_text: Tap the front of your headset to end the performance, and go back to the
+    main menu.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3618d515d66974088a5d6190cc0c4c38, type: 2}
   m_sharedMaterial: {fileID: -1229216906241262552, guid: 3618d515d66974088a5d6190cc0c4c38, type: 2}
@@ -307,7 +308,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -413.62866, y: 0, z: -772.24915, w: 0}
+  m_margin: {x: -413.62866, y: 0, z: -1021.5469, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -341,7 +342,7 @@ RectTransform:
   m_GameObject: {fileID: 6042038835907341710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.95001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 318603617826228453}
@@ -349,8 +350,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 104, y: -45}
-  m_SizeDelta: {x: 1423.6, y: 200}
+  m_AnchoredPosition: {x: 251.81378, y: -45}
+  m_SizeDelta: {x: 1719.2277, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8271011856339433980
 CanvasRenderer:
