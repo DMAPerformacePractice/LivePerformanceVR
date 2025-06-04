@@ -23,13 +23,13 @@ MonoBehaviour:
   textPrimaryInvertedColor: {r: 0, g: 0, b: 0, a: 1}
   textSecondaryInvertedColor: {r: 0, g: 0, b: 0, a: 0.69803923}
   primaryButton:
-    normal: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
+    normal: {r: 0, g: 0.47843137, b: 1, a: 1}
     highlighted: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
     pressed: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
     selected: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
     disabled: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
   secondaryButton:
-    normal: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
+    normal: {r: 0, g: 0.47843137, b: 1, a: 1}
     highlighted: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
     pressed: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
     selected: {r: 0.18974723, g: 0.5683708, b: 0.9811321, a: 1}
