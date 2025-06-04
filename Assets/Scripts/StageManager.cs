@@ -76,8 +76,12 @@ public class StageManager : MonoBehaviour
     /// </summary>
     private static AudienceInterruption[] claps;
 
+    private AudioSource beginningAnnouncementSource;
+
     private void Awake()
     {
+        beginningAnnouncementSource = GetComponent<AudioSource>();
+
         // Load all the assets in the Resources/Interruptions folder
         var interruptions = Resources.LoadAll("Interruptions/General");
 
@@ -169,7 +173,7 @@ public class StageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(StartPerformance());
     }
 
     // Update is called once per frame
@@ -185,10 +189,29 @@ public class StageManager : MonoBehaviour
     ///     Only does the above if the user is not already performing.
     /// </para>
     /// </summary>
-    public void StartPerformance()
+    private IEnumerator StartPerformance()
     {
         if (performanceStarted == false)
         {
+            yield return new WaitForSeconds(0.5f);
+
+            beginningAnnouncementSource.Play();
+
+            yield return new WaitUntil(() =>
+            {
+                return !beginningAnnouncementSource.isPlaying;
+            });
+
+            yield return new WaitForSeconds(0.5f);
+
+            StartAudienceClapping(this);
+
+            yield return new WaitForSeconds(5);
+
+            StopAudienceClapping(this);
+
+
+
             // Trigger OnPerformanceStartEvent event
             OnPerformanceStartEvent(this);
             performanceStarted = true;
@@ -218,9 +241,9 @@ public class StageManager : MonoBehaviour
 
             // Turn the lights back on
             StartCoroutine(BrightenLights());
-        }
 
-        StartCoroutine(WaitToSwitchScene());
+            StartCoroutine(WaitToSwitchScene());
+        }
     }
 
     /// <summary>
