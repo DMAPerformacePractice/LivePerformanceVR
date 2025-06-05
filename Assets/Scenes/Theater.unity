@@ -16405,6 +16405,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1865831433}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2130227957 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3260593020849392874, guid: 0dbfb62cbcd7b034c9d10337b3ed4f4d, type: 3}
+  m_PrefabInstance: {fileID: 1467970162}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2136258312
 GameObject:
   m_ObjectHideFlags: 0
@@ -16811,10 +16816,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: StageManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5935002854416020872, guid: b96109e41c9512b4ba8bae5c48dc0ef0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6620270692207681417, guid: b96109e41c9512b4ba8bae5c48dc0ef0, type: 3}
       propertyPath: MinDistance
       value: 4.098344
       objectReference: {fileID: 0}
+    - target: {fileID: 7123978020566697125, guid: b96109e41c9512b4ba8bae5c48dc0ef0, type: 3}
+      propertyPath: stage
+      value: 
+      objectReference: {fileID: 2130227957}
     - target: {fileID: 7123978020566697125, guid: b96109e41c9512b4ba8bae5c48dc0ef0, type: 3}
       propertyPath: roomLight
       value: 

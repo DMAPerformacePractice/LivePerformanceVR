@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f7539e450d1f54a95df8e78835e68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inTheatre: 1
+  stage: {fileID: 0}
   centerStageLight: {fileID: 0}
   roomLight: {fileID: 0}
   audienceMemberPrefabs:
