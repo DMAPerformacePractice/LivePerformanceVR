@@ -4016,6 +4016,62 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2104153910397671276, guid: 8d22ee758cfd547989dd3d230d71b17f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 671.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2104153910397671276, guid: 8d22ee758cfd547989dd3d230d71b17f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 112.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2104153910397671276, guid: 8d22ee758cfd547989dd3d230d71b17f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2104153910397671276, guid: 8d22ee758cfd547989dd3d230d71b17f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2104153910397671276, guid: 8d22ee758cfd547989dd3d230d71b17f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 114
+      objectReference: {fileID: 0}
+    - target: {fileID: 2618591045723733441, guid: 8d22ee758cfd547989dd3d230d71b17f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f566ed003a1a445c1927c80f0e0edbc8, type: 3}
+    - target: {fileID: 3147784102805057926, guid: 8d22ee758cfd547989dd3d230d71b17f, type: 3}
+      propertyPath: m_fontSize
+      value: 36.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3147784102805057926, guid: 8d22ee758cfd547989dd3d230d71b17f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 3147784102805057926, guid: 8d22ee758cfd547989dd3d230d71b17f, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4228258562471887345, guid: 8d22ee758cfd547989dd3d230d71b17f, type: 3}
+      propertyPath: m_fontSize
+      value: 38.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4228258562471887345, guid: 8d22ee758cfd547989dd3d230d71b17f, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977572175434341628, guid: 8d22ee758cfd547989dd3d230d71b17f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f566ed003a1a445c1927c80f0e0edbc8, type: 3}
+    - target: {fileID: 8691468490422191456, guid: 8d22ee758cfd547989dd3d230d71b17f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1800
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691468490422191456, guid: 8d22ee758cfd547989dd3d230d71b17f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 281
+      objectReference: {fileID: 0}
     - target: {fileID: 8820638241261231455, guid: 8d22ee758cfd547989dd3d230d71b17f, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
