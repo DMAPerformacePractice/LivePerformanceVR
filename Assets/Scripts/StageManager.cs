@@ -9,6 +9,12 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class StageManager : MonoBehaviour
 {
+    [SerializeField] private bool inTheatre = true;
+
+    [SerializeField] private static bool showStage = true;
+
+    [SerializeField] private GameObject stage;
+
     /// <summary>
     /// The center stage light.
     /// </summary>
@@ -38,11 +44,6 @@ public class StageManager : MonoBehaviour
     private bool lightsDimming = false;
 
     public static bool performanceStarted = false;
-
-    /// <summary>
-    /// Is the user currently performing?
-    /// </summary>
-    public bool userPerforming = false;
 
     /// <summary>
     /// Actions, primarily to attach audience member functions to
@@ -80,100 +81,109 @@ public class StageManager : MonoBehaviour
 
     private void Awake()
     {
-        beginningAnnouncementSource = GetComponent<AudioSource>();
-
-        // Load all the assets in the Resources/Interruptions folder
-        var interruptions = Resources.LoadAll("Interruptions/General");
-
-        // Make sure the audienceInterruptions array is the proper length
-        audienceInterruptions = new AudienceInterruption[interruptions.Length];
-
-        // Go through all the loaded assets and save all the AudienceInterruptions into the appropriate array
-        // (They should all be AudienceInterruptions)
-        for (int i = 0; i < interruptions.Length; i++)
-        {
-            if (interruptions[i] is AudienceInterruption)
-            {
-                audienceInterruptions[i] = (AudienceInterruption) interruptions[i];
-            }
-        }
-
-        // Load all the assets in the Resources/Interruptions/Claps folder
-        interruptions = Resources.LoadAll("Interruptions/Claps");
-
-        // Make sure the claps array is the proper length
-        claps = new AudienceInterruption[interruptions.Length];
-
-        // Go through all the loaded assets and save all the AudienceInterruptions into the appropriate array
-        // (They should all be AudienceInterruptions)
-        for (int i = 0; i < interruptions.Length; i++)
-        {
-            if (interruptions[i] is AudienceInterruption)
-            {
-                claps[i] = (AudienceInterruption)interruptions[i];
-            }
-        }
-
-        // Set audienceSpawnPoints to the first object with the "Audience Spawn Points" tag found in the scene
-        // There should be only one of those
-        audienceSpawnPoints = GameObject.FindGameObjectsWithTag("Audience Spawn Points")[0];
-
-        if (audienceSpawnPoints != null)
-        {
-            // Get the transforms of all the audience spawn points (which are the children of audienceSpawnPoints)
-            Transform[] spawnPoints = audienceSpawnPoints.GetComponentsInChildren<Transform>();
-
-            // Load all the assets in the Resources/Animator Overrides folder
-            var animatorOverrideResources = Resources.LoadAll("Animator Overrides");
-
-            // Make an array to hold all the AnimatorOverrideControllers from the assets we just loaded
-            AnimatorOverrideController[] animatorOverrides = new AnimatorOverrideController[animatorOverrideResources.Length];
-
-            // Go through all the loaded assets and save all the AnimatorOverideControllers into the appropriate array
-            // (They should all be AnimatorOverrideControllers)
-            for (int i = 0; i < animatorOverrideResources.Length; i++)
-            {
-                if (animatorOverrideResources[i] is AnimatorOverrideController)
-                {
-                    animatorOverrides[i] = (AnimatorOverrideController)animatorOverrideResources[i];
-                }
-            }
-
-            List<GameObject> unusedAudienceMemberPrefabs = new List<GameObject>(audienceMemberPrefabs);
-
-            // Loop through spawn points
-            // Skip i = 0 because that is the audienceSpawnPoints object, due to how GetComponentsInChildren() work
-            for (int i = 1; i < spawnPoints.Length && unusedAudienceMemberPrefabs.Count != 0; i++)
-            {
-                // Randomly (psudeo-random, of course) decide which audience member to spawn
-                int audienceMemberNum = UnityEngine.Random.Range(0, unusedAudienceMemberPrefabs.Count);
-
-                // Spawn the audience member
-                GameObject temp = Instantiate(unusedAudienceMemberPrefabs[audienceMemberNum], spawnPoints[i]);
-
-                // Randomly chose which set of animations to use for this new audience member
-                int animatorOverrideNum = UnityEngine.Random.Range(0, animatorOverrides.Length + 1);
-
-                // If the animaterOverrideNum == animatorOverrides.Length, just use the base animations
-                if (animatorOverrideNum < animatorOverrides.Length)
-                {
-                    // Change the set of animations the audience member will use
-                    temp.GetComponent<Animator>().runtimeAnimatorController = animatorOverrides[animatorOverrideNum];
-                }
-
-                unusedAudienceMemberPrefabs.RemoveAt(audienceMemberNum);
-            }
-        }
+        if (stage != null)
+            stage.SetActive(showStage);
         else
+            Debug.LogWarning("Stage Manager is not assigned a stage.");
+
+        if (inTheatre)
         {
-            Debug.LogError("No audience spawn point holder found. Audience members have not been spawned.");
+            beginningAnnouncementSource = GetComponent<AudioSource>();
+
+            // Load all the assets in the Resources/Interruptions folder
+            var interruptions = Resources.LoadAll("Interruptions/General");
+
+            // Make sure the audienceInterruptions array is the proper length
+            audienceInterruptions = new AudienceInterruption[interruptions.Length];
+
+            // Go through all the loaded assets and save all the AudienceInterruptions into the appropriate array
+            // (They should all be AudienceInterruptions)
+            for (int i = 0; i < interruptions.Length; i++)
+            {
+                if (interruptions[i] is AudienceInterruption)
+                {
+                    audienceInterruptions[i] = (AudienceInterruption)interruptions[i];
+                }
+            }
+
+            // Load all the assets in the Resources/Interruptions/Claps folder
+            interruptions = Resources.LoadAll("Interruptions/Claps");
+
+            // Make sure the claps array is the proper length
+            claps = new AudienceInterruption[interruptions.Length];
+
+            // Go through all the loaded assets and save all the AudienceInterruptions into the appropriate array
+            // (They should all be AudienceInterruptions)
+            for (int i = 0; i < interruptions.Length; i++)
+            {
+                if (interruptions[i] is AudienceInterruption)
+                {
+                    claps[i] = (AudienceInterruption)interruptions[i];
+                }
+            }
+
+            // Set audienceSpawnPoints to the first object with the "Audience Spawn Points" tag found in the scene
+            // There should be only one of those
+            audienceSpawnPoints = GameObject.FindGameObjectsWithTag("Audience Spawn Points")[0];
+
+            if (audienceSpawnPoints != null)
+            {
+                // Get the transforms of all the audience spawn points (which are the children of audienceSpawnPoints)
+                Transform[] spawnPoints = audienceSpawnPoints.GetComponentsInChildren<Transform>();
+
+                // Load all the assets in the Resources/Animator Overrides folder
+                var animatorOverrideResources = Resources.LoadAll("Animator Overrides");
+
+                // Make an array to hold all the AnimatorOverrideControllers from the assets we just loaded
+                AnimatorOverrideController[] animatorOverrides = new AnimatorOverrideController[animatorOverrideResources.Length];
+
+                // Go through all the loaded assets and save all the AnimatorOverideControllers into the appropriate array
+                // (They should all be AnimatorOverrideControllers)
+                for (int i = 0; i < animatorOverrideResources.Length; i++)
+                {
+                    if (animatorOverrideResources[i] is AnimatorOverrideController)
+                    {
+                        animatorOverrides[i] = (AnimatorOverrideController)animatorOverrideResources[i];
+                    }
+                }
+
+                List<GameObject> unusedAudienceMemberPrefabs = new List<GameObject>(audienceMemberPrefabs);
+
+                // Loop through spawn points
+                // Skip i = 0 because that is the audienceSpawnPoints object, due to how GetComponentsInChildren() work
+                for (int i = 1; i < spawnPoints.Length && unusedAudienceMemberPrefabs.Count != 0; i++)
+                {
+                    // Randomly (psudeo-random, of course) decide which audience member to spawn
+                    int audienceMemberNum = UnityEngine.Random.Range(0, unusedAudienceMemberPrefabs.Count);
+
+                    // Spawn the audience member
+                    GameObject temp = Instantiate(unusedAudienceMemberPrefabs[audienceMemberNum], spawnPoints[i]);
+
+                    // Randomly chose which set of animations to use for this new audience member
+                    int animatorOverrideNum = UnityEngine.Random.Range(0, animatorOverrides.Length + 1);
+
+                    // If the animaterOverrideNum == animatorOverrides.Length, just use the base animations
+                    if (animatorOverrideNum < animatorOverrides.Length)
+                    {
+                        // Change the set of animations the audience member will use
+                        temp.GetComponent<Animator>().runtimeAnimatorController = animatorOverrides[animatorOverrideNum];
+                    }
+
+                    unusedAudienceMemberPrefabs.RemoveAt(audienceMemberNum);
+                }
+            }
+            else
+            {
+                Debug.LogError("No audience spawn point holder found. Audience members have not been spawned.");
+            }
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(StartPerformance());
+        if (inTheatre)
+            StartCoroutine(StartPerformance());
     }
 
     // Update is called once per frame
@@ -342,6 +352,15 @@ public class StageManager : MonoBehaviour
         }
 
         SceneManager.LoadScene(0);
+    }
+
+    public void toggleStage()
+    {
+        showStage = !showStage;
+        if (!inTheatre)
+        {
+            stage.SetActive(!stage.activeSelf);
+        }
     }
 
     /// <summary>

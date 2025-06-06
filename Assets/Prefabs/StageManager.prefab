@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3387859795755512530}
   - component: {fileID: 7123978020566697125}
-  - component: {fileID: 7556477805130312812}
   - component: {fileID: 6620270692207681417}
   m_Layer: 0
   m_Name: StageManager
@@ -46,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f7539e450d1f54a95df8e78835e68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inTheatre: 1
+  stage: {fileID: 0}
   centerStageLight: {fileID: 0}
   roomLight: {fileID: 0}
   audienceMemberPrefabs:
@@ -59,22 +60,8 @@ MonoBehaviour:
   - {fileID: 4290211951260495555, guid: 151db714ba439af4f825ee1e7a0ff15c, type: 3}
   - {fileID: 2456137027573806032, guid: 9a0d386cab2fa0d4bada8eaa8de5edd4, type: 3}
   - {fileID: 8695054238466296617, guid: e9de3b554d9940944993f95eae221563, type: 3}
-  userPerforming: 0
   dimTime: 5
   brightenTime: 2
---- !u!114 &7556477805130312812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5935002854416020872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db290922c09b31c4f98735b37e242e9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sampleWindow: 64
 --- !u!82 &6620270692207681417
 AudioSource:
   m_ObjectHideFlags: 0
