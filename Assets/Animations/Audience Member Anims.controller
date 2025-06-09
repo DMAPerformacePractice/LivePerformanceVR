@@ -32,7 +32,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Repeated Seated Clap
+  m_Name: Repeated Sitting Clap
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -45,7 +45,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1982520502232830019, guid: a8c563bbd018bf5489ce08a26c1b9753, type: 3}
+  m_Motion: {fileID: 4061839508520268033, guid: 7bfcb59e694c8c1498d6d7bb6aa34ac6, type: 3}
   m_Tag: Clap
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -62,8 +62,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 7
     m_ConditionEvent: Interruption Number
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: Not Clapping
+  - m_ConditionMode: 2
+    m_ConditionEvent: Clapping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2338797481451986636}
@@ -99,7 +99,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7899200101804422686, guid: a8c563bbd018bf5489ce08a26c1b9753, type: 3}
+  m_Motion: {fileID: -560145760472405776, guid: 981b0e6c9efe3de4186a4238f93b1f87, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -154,7 +154,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -5097300606835712583, guid: a8c563bbd018bf5489ce08a26c1b9753, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 6ffde1b14dcaf4541803817bb4a46b91, type: 3}
   m_Tag: Clap
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -195,7 +195,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Check Phone
+  m_Name: Texting
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -208,7 +208,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -5064980082614419655, guid: a8c563bbd018bf5489ce08a26c1b9753, type: 3}
+  m_Motion: {fileID: 186634044367547049, guid: e6502fdd147c40d4fa076261d2d6afa6, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -256,8 +256,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Animation Change
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: Not Clapping
+  - m_ConditionMode: 1
+    m_ConditionEvent: Clapping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 952194436312739147}
@@ -293,7 +293,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 6143385877889840709, guid: a8c563bbd018bf5489ce08a26c1b9753, type: 3}
+  m_Motion: {fileID: 8395303211736546213, guid: 722bac401fdcfd047a72944ec1dd887e, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -313,25 +313,25 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Animation Change
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Stop Clapping
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: Not Clapping
+    m_Controller: {fileID: 0}
+  - m_Name: Clapping
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
-    m_Controller: {fileID: 9100000}
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -393,7 +393,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -8537531000544394625, guid: a8c563bbd018bf5489ce08a26c1b9753, type: 3}
+  m_Motion: {fileID: 4723148322894068154, guid: 9897f6c8eec6d9b4ba8664cbf125ef78, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -406,7 +406,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Seated Clap
+  m_Name: Sitting Clap
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -420,7 +420,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -461629362346306203, guid: a8c563bbd018bf5489ce08a26c1b9753, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 7bfcb59e694c8c1498d6d7bb6aa34ac6, type: 3}
   m_Tag: Clap
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -434,8 +434,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: Not Clapping
+  - m_ConditionMode: 1
+    m_ConditionEvent: Clapping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6893607814813897635}
@@ -478,7 +478,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -6775884027671718737, guid: f893821df6414d445935ac53051d63e4, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: ebc77eea9c4d39e4eb5696540a683fa9, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -519,7 +519,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wiggle/Shift In Seat
+  m_Name: Fidget
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -532,7 +532,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -5932667637624912851, guid: a8c563bbd018bf5489ce08a26c1b9753, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 1c12132b215fe4d4391d092383762529, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
