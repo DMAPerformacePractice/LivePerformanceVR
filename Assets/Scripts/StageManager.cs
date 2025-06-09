@@ -216,11 +216,7 @@ public class StageManager : MonoBehaviour
 
             StartAudienceClapping(this);
 
-            yield return new WaitForSeconds(5);
-
-            StopAudienceClapping(this);
-
-
+            yield return new WaitForSeconds(1);
 
             // Trigger OnPerformanceStartEvent event
             OnPerformanceStartEvent(this);
@@ -231,6 +227,10 @@ public class StageManager : MonoBehaviour
             {
                 StartCoroutine(DimLights());
             }
+
+            yield return new WaitForSeconds(4);
+
+            StopAudienceClapping(this);
         }
     }
 

@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: Performance Playground
   productName: Performance Playground
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -139,7 +139,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 0.6.6
+  bundleVersion: 1.0
   preloadedAssets:
   - {fileID: 11400000, guid: 4c1af8fa6c5773a4f92907c642712f14, type: 2}
   metroInputSource: 0
@@ -162,7 +162,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DefaultCompany.PerformancePlayground
+    Android: com.PerformancePlayground.PerformancePlayground
     Standalone: com.DefaultCompany.Perform-Practice-Meta
   buildNumber:
     Standalone: 0
