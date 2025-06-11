@@ -3,7 +3,97 @@ guid: 167caf2fe18adfe45b499081a88d17a4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wolf3D_Body
+    second: {fileID: 2100000, guid: ffd4f728f8b7e52478b192a5e46609e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wolf3D_Eye
+    second: {fileID: 2100000, guid: d69c0995a98f2194b9fbe79ea27a27d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wolf3D_Hair
+    second: {fileID: 2100000, guid: 72700f531aff8b3419ce747461dad558, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wolf3D_Outfit_Bottom
+    second: {fileID: 2100000, guid: f6f1dd33fd99aab4f8123a28aaa4e1a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wolf3D_Outfit_Footwear
+    second: {fileID: 2100000, guid: b9c487280535fb04dbeba046d3ff643a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wolf3D_Outfit_Top
+    second: {fileID: 2100000, guid: 41257b8ec3d0e934db02be7b468098df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wolf3D_Skin
+    second: {fileID: 2100000, guid: ccc5201a7bfa6fd449209e68a4f062db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wolf3D_Teeth
+    second: {fileID: 2100000, guid: 250bb3a4a38e05c479bace4281378372, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: BlackWoman-Hair
+    second: {fileID: 2800000, guid: 3687ae43bf51b1a4080ef6c2a1badf9b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: BlackWoman-HairBump
+    second: {fileID: 2800000, guid: 82ba94159fc76834ba892a66db9e51de, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: BlackWoman-PantsBump
+    second: {fileID: 2800000, guid: 7c2fa6d5930d68e4f85431cfa7b0dad5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: BlackWoman-Shirt
+    second: {fileID: 2800000, guid: 956fb4fe1fd376a4b8f4d5078f8d71dd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: BlackWoman-Shoes
+    second: {fileID: 2800000, guid: cdc5e0572317eae4bb6ead274d59c0eb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: BlackWoman-ShoesBump
+    second: {fileID: 2800000, guid: cab2ec6f9bd3669408b7ddc8a4305caa, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: BlackWoman-Skin
+    second: {fileID: 2800000, guid: a9af18673eaf8794b8b1c367da24aa3d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: BlackWoman-SkinBump
+    second: {fileID: 2800000, guid: ee196722dcdd35945a06571fe4edaac5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: BlackWoman-pants
+    second: {fileID: 2800000, guid: 0b0fd6a9f9c9e584b80fa68efbab5309, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: BlackWoman_Eye
+    second: {fileID: 2800000, guid: 1881fa83efe18384c8d1e6de9ff34c50, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
